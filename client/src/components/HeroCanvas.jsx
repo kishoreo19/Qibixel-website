@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function HeroCanvas() {
   const canvasRef = useRef(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -49,7 +51,7 @@ export default function HeroCanvas() {
       ctx.clearRect(0, 0, width, height);
 
       // Draw subtle background grid
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.strokeStyle = theme === 'dark' ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)';
       ctx.lineWidth = 1;
       const gridSize = 40;
       for (let x = 0; x < width; x += gridSize) {
@@ -107,7 +109,7 @@ export default function HeroCanvas() {
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(other.x, other.y);
             const alpha = (1 - nDist / 110) * 0.3;
-            ctx.strokeStyle = node.accent || other.accent ? `rgba(6, 182, 212, ${alpha})` : `rgba(255, 255, 255, ${alpha * 0.5})`;
+            ctx.strokeStyle = node.accent || other.accent ? `rgba(6, 182, 212, ${alpha})` : (theme === 'dark' ? `rgba(255, 255, 255, ${alpha * 0.5})` : `rgba(0, 0, 0, ${alpha * 0.5})`);
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -129,7 +131,7 @@ export default function HeroCanvas() {
         // Node labels
         if (node.label && width > 480) {
           ctx.font = '10px "JetBrains Mono", monospace';
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+          ctx.fillStyle = theme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)';
           ctx.fillText(node.label, node.x + 8, node.y + 4);
         }
       });
@@ -144,39 +146,39 @@ export default function HeroCanvas() {
       canvas.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [theme]);
 
   return (
-    <div className="relative w-full h-[400px] lg:h-[540px] rounded-2xl overflow-hidden glass-card border border-slate-800/80 group">
+    <div className="relative w-full h-[400px] lg:h-[540px] rounded-2xl overflow-hidden glass-card border border-slate-200 dark:border-slate-800/80 group">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-crosshair" />
       
       {/* Proprietary HUD Overlay Elements */}
-      <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-mono text-cyan-400">
-        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+      <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs font-mono text-cyan-600 dark:text-cyan-400">
+        <span className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-ping" />
         LIVE ORGANIC CRAWL MATRIX
       </div>
 
-      <div className="absolute top-4 right-4 z-10 hidden sm:flex items-center gap-3 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-mono text-slate-300">
-        <span>INDEXING: <strong className="text-emerald-400">99.8%</strong></span>
-        <span className="text-slate-700">|</span>
-        <span>CV SCORE: <strong className="text-cyan-400">98/100</strong></span>
+      <div className="absolute top-4 right-4 z-10 hidden sm:flex items-center gap-3 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">
+        <span>INDEXING: <strong className="text-emerald-600 dark:text-emerald-400">99.8%</strong></span>
+        <span className="text-slate-300 dark:text-slate-700">|</span>
+        <span>CV SCORE: <strong className="text-cyan-600 dark:text-cyan-400">98/100</strong></span>
       </div>
 
       {/* Floating HUD metrics */}
-      <div className="absolute bottom-6 left-6 z-10 max-w-[240px] bg-slate-950/85 backdrop-blur-md p-3.5 rounded-xl border border-slate-800/90 shadow-2xl text-left hidden sm:block">
-        <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">QIBIXEL Growth Signal</div>
-        <div className="text-sm font-semibold text-white flex items-center justify-between">
+      <div className="absolute bottom-6 left-6 z-10 max-w-[240px] bg-white/85 dark:bg-slate-950/85 backdrop-blur-md p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/90 shadow-2xl text-left hidden sm:block">
+        <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">QIBIXEL Growth Signal</div>
+        <div className="text-sm font-semibold text-slate-900 dark:text-white flex items-center justify-between">
           <span>Search Velocity</span>
-          <span className="text-emerald-400 font-mono text-xs">+342% YoY</span>
+          <span className="text-emerald-600 dark:text-emerald-400 font-mono text-xs">+342% YoY</span>
         </div>
-        <div className="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+        <div className="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
           <div className="bg-gradient-to-r from-cyan-500 to-emerald-400 h-full w-[88%]" />
         </div>
       </div>
 
-      <div className="absolute bottom-6 right-6 z-10 hidden md:block bg-slate-950/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-slate-800 text-right font-mono text-xs text-slate-300">
-        <div className="text-cyan-400 font-bold">QIBIXEL NODE ENGINE</div>
-        <div className="text-[10px] text-slate-400">Autonomous Rank Optimization</div>
+      <div className="absolute bottom-6 right-6 z-10 hidden md:block bg-white/85 dark:bg-slate-950/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-right font-mono text-xs text-slate-700 dark:text-slate-300">
+        <div className="text-cyan-600 dark:text-cyan-400 font-bold">QIBIXEL NODE ENGINE</div>
+        <div className="text-[10px] text-slate-500 dark:text-slate-400">Autonomous Rank Optimization</div>
       </div>
     </div>
   );

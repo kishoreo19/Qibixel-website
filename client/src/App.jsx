@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AuditModal from './components/AuditModal';
 import ScrollToTop from './components/ScrollToTop';
+import { ThemeProvider } from './context/ThemeContext';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -28,10 +29,11 @@ export default function App() {
   };
 
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-[#080B11] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-300 flex flex-col justify-between">
-        
+    <ThemeProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen bg-slate-50 dark:bg-[#080B11] text-slate-900 dark:text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-600 dark:selection:text-cyan-300 flex flex-col justify-between transition-colors duration-300">
+          
         {/* Sticky Header Navigation */}
         <Navbar onOpenAudit={handleOpenAudit} />
 
@@ -61,7 +63,8 @@ export default function App() {
           onClose={handleCloseAudit}
         />
 
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }

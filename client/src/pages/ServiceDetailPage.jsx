@@ -57,7 +57,7 @@ export default function ServiceDetailPage({ onOpenAudit }) {
               <span>SERVICE MODULE {service.id}</span>
             </div>
             
-            <h1 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight leading-tight mb-6">
+            <h1 className="font-display font-black text-4xl sm:text-6xl text-primary tracking-tight leading-tight mb-6">
               {service.title}
             </h1>
 
@@ -96,7 +96,7 @@ export default function ServiceDetailPage({ onOpenAudit }) {
           
           <div className="lg:col-span-8 space-y-8">
             <div className="glass-card rounded-2xl p-8 border border-slate-800">
-              <h3 className="font-display font-bold text-2xl text-white mb-6">
+              <h3 className="font-display font-bold text-2xl text-primary mb-6">
                 Strategic Scope & Implementation Deliverables
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -115,7 +115,7 @@ export default function ServiceDetailPage({ onOpenAudit }) {
             </div>
 
             <div className="glass-card rounded-2xl p-8 border border-slate-800 space-y-4">
-              <h3 className="font-display font-bold text-2xl text-white">
+              <h3 className="font-display font-bold text-2xl text-primary">
                 How QIBIXEL Executes {service.title}
               </h3>
               <p className="text-sm text-slate-300 leading-relaxed font-normal">

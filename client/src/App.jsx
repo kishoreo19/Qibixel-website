@@ -32,13 +32,16 @@ export default function App() {
     <ThemeProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen bg-slate-50 dark:bg-[#080B11] text-slate-900 dark:text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-600 dark:selection:text-cyan-300 flex flex-col justify-between transition-colors duration-300">
+        <div className="min-h-screen relative bg-background text-primary selection:bg-cyan-500/20 selection:text-cyan-600 dark:selection:text-cyan-300 flex flex-col justify-between transition-colors duration-300">
+          <div className="absolute inset-0 z-0 pointer-events-none bg-grid-pattern-light dark:bg-grid-pattern opacity-50"></div>
           
         {/* Sticky Header Navigation */}
-        <Navbar onOpenAudit={handleOpenAudit} />
+        <div className="relative z-50">
+          <Navbar onOpenAudit={handleOpenAudit} />
+        </div>
 
         {/* Dynamic Route Pages */}
-        <main className="flex-grow">
+        <main className="flex-grow relative z-10">
           <Routes>
             <Route path="/" element={<HomePage onOpenAudit={handleOpenAudit} />} />
             <Route path="/about" element={<AboutPage onOpenAudit={handleOpenAudit} />} />
@@ -55,7 +58,9 @@ export default function App() {
         </main>
 
         {/* Multi-column Footer */}
-        <Footer />
+        <div className="relative z-10">
+          <Footer />
+        </div>
 
         {/* Global Instant AI SEO Audit Modal */}
         <AuditModal

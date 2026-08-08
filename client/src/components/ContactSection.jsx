@@ -64,7 +64,7 @@ export default function ContactSection() {
               <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
                 INITIATE STRATEGY DISCOVERY
               </div>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-6">
+              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
                 Let’s Talk About Your Growth.
               </h2>
               <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-8">
@@ -102,7 +102,7 @@ export default function ContactSection() {
                   <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-white">
+                  <h3 className="font-display font-bold text-2xl text-primary">
                     Enquiry Received
                   </h3>
                   <p className="text-base text-slate-300 max-w-md mx-auto leading-relaxed">

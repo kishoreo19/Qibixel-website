@@ -50,7 +50,7 @@ export default function ProcessTimeline() {
           <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
             SYSTEMATIC METHODOLOGY
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight">
             From Search Opportunity to Sustainable Growth
           </h2>
         </div>
@@ -62,28 +62,28 @@ export default function ProcessTimeline() {
             return (
               <div
                 key={step.num}
-                className="glass-card p-8 rounded-2xl border border-slate-800 relative group flex flex-col justify-between"
+                className="glass-card p-8 rounded-2xl relative group flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <span className="font-mono font-black text-2xl text-cyan-400">
                       {step.num}
                     </span>
-                    <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-all">
+                    <div className="w-10 h-10 rounded-xl bg-surface-elevated border border-border flex items-center justify-center text-muted group-hover:text-accent group-hover:border-cyan-500/30 transition-all">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
 
-                  <h3 className="font-display font-bold text-2xl text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                  <h3 className="font-display font-bold text-2xl text-primary mb-3 group-hover:text-accent transition-colors">
                     {step.name}
                   </h3>
 
-                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                  <p className="text-sm text-muted leading-relaxed font-normal">
                     {step.desc}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <div className="pt-6 mt-6 border-t border-border flex items-center justify-between text-[11px] font-mono text-muted">
                   <span>STAGE {step.num}</span>
                   <span className="text-emerald-400">QIBIXEL EXECUTION</span>
                 </div>

@@ -40,7 +40,7 @@ export default function FAQSection() {
             <HelpCircle className="w-3.5 h-3.5" />
             <span>TRANSPARENCY FIRST</span>
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight">
             Frequently Asked Questions
           </h2>
         </div>

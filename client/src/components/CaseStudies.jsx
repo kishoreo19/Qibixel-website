@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { caseStudiesData } from '../data/caseStudiesData';
 import { ArrowRight, Info, TrendingUp, AlertCircle } from 'lucide-react';
 
 export default function CaseStudies({ onSelectCaseStudy }) {
   return (
-    <section id="case-studies" className="py-24 relative bg-[#090D15] border-t border-slate-800/80">
+    <section id="case-studies" className="py-24 relative bg-background border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -12,10 +13,10 @@ export default function CaseStudies({ onSelectCaseStudy }) {
           <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
             VERIFIED CASE STUDIES
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-6">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
             Proof Over Promises.
           </h2>
-          <p className="text-lg text-slate-300 font-normal leading-relaxed">
+          <p className="text-lg text-muted font-normal leading-relaxed">
             Explore how strategic SEO can create measurable improvements in visibility, traffic, leads, and business performance.
           </p>
         </div>
@@ -26,7 +27,7 @@ export default function CaseStudies({ onSelectCaseStudy }) {
             <div
               key={cs.id}
               onClick={() => onSelectCaseStudy && onSelectCaseStudy(cs)}
-              className="glass-card rounded-2xl p-8 border border-slate-800 flex flex-col justify-between group hover:border-cyan-500/40 cursor-pointer transition-all duration-300 relative overflow-hidden"
+              className="glass-card rounded-2xl p-8 flex flex-col justify-between group hover:border-cyan-500/40 cursor-pointer transition-all duration-300 relative overflow-hidden"
             >
               <div>
                 {/* Tag & Industry */}
@@ -39,24 +40,24 @@ export default function CaseStudies({ onSelectCaseStudy }) {
                   </span>
                 </div>
 
-                <h3 className="font-display font-bold text-xl text-white mb-4 group-hover:text-cyan-400 transition-colors leading-snug">
+                <h3 className="font-display font-bold text-xl text-primary mb-4 group-hover:text-accent transition-colors leading-snug">
                   {cs.title}
                 </h3>
 
                 {/* Challenge & Strategy Brief */}
-                <div className="space-y-3 mb-6 text-xs text-slate-300">
+                <div className="space-y-3 mb-6 text-xs text-muted">
                   <div>
-                    <strong className="text-slate-400 uppercase tracking-wider block font-mono text-[10px] mb-1">CHALLENGE</strong>
-                    <p className="line-clamp-2 text-slate-300">{cs.challenge}</p>
+                    <strong className="text-muted uppercase tracking-wider block font-mono text-[10px] mb-1">CHALLENGE</strong>
+                    <p className="line-clamp-2 text-muted">{cs.challenge}</p>
                   </div>
                   <div>
-                    <strong className="text-slate-400 uppercase tracking-wider block font-mono text-[10px] mb-1">STRATEGY</strong>
-                    <p className="line-clamp-2 text-slate-300">{cs.strategy}</p>
+                    <strong className="text-muted uppercase tracking-wider block font-mono text-[10px] mb-1">STRATEGY</strong>
+                    <p className="line-clamp-2 text-muted">{cs.strategy}</p>
                   </div>
                 </div>
 
                 {/* Key Metrics Display */}
-                <div className="grid grid-cols-3 gap-2 py-4 px-3 rounded-xl bg-slate-950 border border-slate-800/80 mb-4">
+                <div className="grid grid-cols-3 gap-2 py-4 px-3 rounded-xl bg-surface-elevated border border-border mb-4">
                   {cs.results.map((res, rIdx) => (
                     <div key={rIdx} className="text-center">
                       <div className={`font-display font-bold text-base sm:text-lg ${res.highlight ? 'text-cyan-400' : 'text-emerald-400'}`}>
@@ -72,12 +73,12 @@ export default function CaseStudies({ onSelectCaseStudy }) {
 
               {/* Note & CTA */}
               <div>
-                <div className="text-[11px] text-slate-400 flex items-center gap-1.5 mb-4">
-                  <Info className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                <div className="text-[11px] text-muted flex items-center gap-1.5 mb-4">
+                  <Info className="w-3.5 h-3.5 text-muted flex-shrink-0" />
                   <span className="truncate">{cs.note}</span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 group-hover:translate-x-1 transition-transform">
+                <div className="inline-flex items-center gap-2 text-xs font-semibold text-accent group-hover:translate-x-1 transition-transform">
                   <span>Explore Case Study</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
@@ -90,13 +91,13 @@ export default function CaseStudies({ onSelectCaseStudy }) {
 
         {/* Global CTA */}
         <div className="text-center">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-slate-800 text-sm font-semibold text-slate-200 hover:text-white hover:border-cyan-500/40 transition-all"
+          <Link
+            to="/case-studies"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-surface border border-border text-sm font-semibold text-secondary hover:text-primary hover:border-cyan-500/40 transition-all"
           >
             <span>View All Case Studies</span>
-            <ArrowRight className="w-4 h-4 text-cyan-400" />
-          </a>
+            <ArrowRight className="w-4 h-4 text-accent" />
+          </Link>
         </div>
 
       </div>

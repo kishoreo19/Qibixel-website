@@ -41,7 +41,7 @@ export default function InsightDetailPage({ onOpenAudit }) {
         </div>
 
         {/* Headline */}
-        <h1 className="font-display font-black text-3xl sm:text-5xl text-white mb-6 leading-tight">
+        <h1 className="font-display font-black text-3xl sm:text-5xl text-primary mb-6 leading-tight">
           {article.title}
         </h1>
 

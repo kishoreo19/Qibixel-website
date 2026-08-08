@@ -8,16 +8,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        qibixel: {
-          dark: '#080B11',
-          surface: '#0F1420',
-          card: '#141A29',
-          border: '#1E293B',
-          accent: '#06B6D4',
-          accentGlow: '#22D3EE',
-          emerald: '#10B981',
-          textMuted: '#94A3B8',
-          textDark: '#64748B',
+        background: 'rgb(var(--color-background) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        card: 'rgb(var(--color-card) / <alpha-value>)',
+        border: 'rgb(var(--color-border) / <alpha-value>)',
+        primary: 'rgb(var(--color-text-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-text-secondary) / <alpha-value>)',
+        muted: 'rgb(var(--color-text-muted) / <alpha-value>)',
+        accent: {
+          DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
+          hover: 'rgb(var(--color-accent-hover) / <alpha-value>)',
+          glow: 'rgb(var(--color-accent-glow) / <alpha-value>)',
+        },
+        emerald: {
+          DEFAULT: 'rgb(var(--color-emerald) / <alpha-value>)',
         }
       },
       fontFamily: {
@@ -27,17 +31,29 @@ export default {
       },
       backgroundImage: {
         'grid-pattern': "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)",
+        'grid-pattern-light': "radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px)",
         'cyan-glow': "radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(6, 182, 212, 0.12), transparent 40%)"
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'spin-slow': 'spin 20s linear infinite',
         'float': 'float 6s ease-in-out infinite',
+        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+        'ping-slow': 'pingSlow 4s ease-in-out infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        pingSlow: {
+          '0%': { transform: 'scale(0.95)', opacity: '0.8' },
+          '50%': { transform: 'scale(1.08)', opacity: '0.3' },
+          '100%': { transform: 'scale(0.95)', opacity: '0.8' },
         }
       }
     },

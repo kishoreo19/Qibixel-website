@@ -36,7 +36,7 @@ export default function WhyQibixel() {
   ];
 
   return (
-    <section className="py-24 relative bg-[#090D15] border-y border-slate-800/80">
+    <section className="py-24 relative bg-background border-y border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -44,7 +44,7 @@ export default function WhyQibixel() {
           <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
             THE QIBIXEL ADVANTAGE
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-6">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
             A More Intelligent Approach to SEO
           </h2>
         </div>
@@ -56,21 +56,21 @@ export default function WhyQibixel() {
             return (
               <div
                 key={idx}
-                className="glass-card p-8 rounded-2xl border border-slate-800 flex flex-col justify-between group"
+                className="glass-card p-8 rounded-2xl flex flex-col justify-between group"
               >
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                  <h3 className="font-display font-bold text-xl text-primary mb-3 group-hover:text-accent transition-colors">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                  <p className="text-sm text-muted leading-relaxed font-normal">
                     {pillar.desc}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <div className="pt-6 mt-6 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-muted">
                   <span>PILLAR 0{idx + 1}</span>
                   <span className="text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">INTEL CORE</span>
                 </div>

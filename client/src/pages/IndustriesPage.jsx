@@ -15,7 +15,7 @@ export default function IndustriesPage({ onOpenAudit }) {
             <Globe2 className="w-3.5 h-3.5" />
             <span>MARKET VERTICALS</span>
           </div>
-          <h1 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight leading-tight mb-6">
+          <h1 className="font-display font-black text-4xl sm:text-6xl text-primary tracking-tight leading-tight mb-6">
             Industry-Tailored Organic Growth Frameworks
           </h1>
           <p className="text-xl text-slate-300 font-normal leading-relaxed">

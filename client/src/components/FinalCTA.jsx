@@ -17,7 +17,7 @@ export default function FinalCTA({ onOpenAudit, onScrollContact }) {
             <span>START YOUR ORGANIC GROWTH JOURNEY</span>
           </div>
 
-          <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight leading-tight mb-4">
+          <h2 className="font-display font-black text-4xl sm:text-6xl text-primary tracking-tight leading-tight mb-4">
             Your Customers Are Searching. <br />
             <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
               Make Sure They Find You.

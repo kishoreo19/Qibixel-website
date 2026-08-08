@@ -16,7 +16,7 @@ export default function CaseStudiesPage({ onOpenAudit }) {
           <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
             VERIFIED CASE STUDIES
           </div>
-          <h1 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight leading-tight mb-6">
+          <h1 className="font-display font-black text-4xl sm:text-6xl text-primary tracking-tight leading-tight mb-6">
             Proof Over Promises.
           </h1>
           <p className="text-xl text-slate-300 font-normal leading-relaxed">
@@ -43,7 +43,7 @@ export default function CaseStudiesPage({ onOpenAudit }) {
                   </span>
                 </div>
 
-                <h2 className="font-display font-bold text-2xl text-white mb-4 group-hover:text-cyan-400 transition-colors">
+                <h2 className="font-display font-bold text-2xl text-primary mb-4 group-hover:text-cyan-400 transition-colors">
                   {cs.title}
                 </h2>
 

@@ -24,7 +24,7 @@ export default function Testimonials() {
           <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
             CLIENT FEEDBACK
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-4">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-4">
             What Our Clients Say
           </h2>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-xs font-mono text-amber-400">

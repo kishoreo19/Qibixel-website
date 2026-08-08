@@ -30,8 +30,8 @@ export default function Navbar({ onOpenAudit }) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 dark:bg-[#080B11]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 py-3.5 shadow-xl dark:shadow-2xl'
+        isScrolled || mobileMenuOpen
+          ? 'bg-surface/95 backdrop-blur-md border-b border-border py-3.5 shadow-xl dark:shadow-2xl'
           : 'bg-transparent py-5'
       }`}
     >
@@ -41,12 +41,12 @@ export default function Navbar({ onOpenAudit }) {
           {/* Brand Logo Link to Home */}
           <Link to="/" className="flex items-center gap-2.5 group">
             <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 p-[1px] shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-all">
-              <div className="w-full h-full bg-slate-50 dark:bg-[#080B11] rounded-[7px] flex items-center justify-center">
-                <span className="font-display font-black text-cyan-600 dark:text-cyan-400 text-lg tracking-tighter">Q</span>
+              <div className="w-full h-full bg-background rounded-[7px] flex items-center justify-center">
+                <span className="font-display font-black text-accent text-lg tracking-tighter">Q</span>
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-extrabold text-xl tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+              <span className="font-display font-extrabold text-xl tracking-tight text-primary group-hover:text-accent transition-colors">
                 QIBIXEL
               </span>
               <span className="text-[9px] font-mono text-slate-400 tracking-widest uppercase -mt-1">
@@ -63,7 +63,7 @@ export default function Navbar({ onOpenAudit }) {
                 to={link.path}
                 className={({ isActive }) =>
                   `text-sm font-medium transition-colors duration-200 ${
-                    isActive ? 'text-cyan-600 dark:text-cyan-400 font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400'
+                    isActive ? 'text-accent font-semibold' : 'text-muted hover:text-accent'
                   }`
                 }
               >
@@ -72,7 +72,7 @@ export default function Navbar({ onOpenAudit }) {
             ))}
           </nav>
 
-          {/* Desktop CTA & Theme Toggle */}
+          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={toggleTheme}
@@ -85,12 +85,12 @@ export default function Navbar({ onOpenAudit }) {
               onClick={onOpenAudit}
               className="relative group overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 p-[1px] focus:outline-none"
             >
-              <div className="px-5 py-2.5 rounded-[11px] bg-slate-50 dark:bg-[#080B11] group-hover:bg-transparent transition-all duration-300 flex items-center gap-2">
-                <Search className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-white dark:group-hover:text-slate-950 transition-colors" />
-                <span className="text-xs font-semibold tracking-wide text-slate-900 dark:text-white group-hover:text-white dark:group-hover:text-slate-950">
+              <div className="px-5 py-2.5 rounded-[11px] bg-background group-hover:bg-transparent transition-all duration-300 flex items-center gap-2">
+                <Search className="w-4 h-4 text-accent group-hover:text-white dark:group-hover:text-slate-950 transition-colors" />
+                <span className="text-xs font-semibold tracking-wide text-primary group-hover:text-white dark:group-hover:text-slate-950">
                   Get an SEO Audit
                 </span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400 group-hover:text-white dark:group-hover:text-slate-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-accent group-hover:text-white dark:group-hover:text-slate-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
             </button>
           </div>
@@ -99,20 +99,14 @@ export default function Navbar({ onOpenAudit }) {
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all focus:outline-none"
+              className="p-1.5 rounded-lg text-muted hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all focus:outline-none"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
             <button
-              onClick={onOpenAudit}
-              className="text-[11px] font-semibold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-2.5 py-1.5 rounded-lg border border-cyan-500/30"
-            >
-              SEO Audit
-            </button>
-            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white focus:outline-none relative z-50"
+              className="p-1.5 text-muted hover:text-primary focus:outline-none relative z-50"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -124,7 +118,7 @@ export default function Navbar({ onOpenAudit }) {
 
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-slate-50/98 dark:bg-[#080B11]/98 backdrop-blur-3xl pt-[80px] pb-6 px-6 h-screen w-full flex flex-col justify-between overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="lg:hidden fixed inset-0 z-40 bg-surface pt-[80px] pb-6 px-6 h-screen w-full flex flex-col justify-between overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col gap-5 mt-4">
             {navLinks.map((link) => (
               <NavLink
@@ -133,7 +127,7 @@ export default function Navbar({ onOpenAudit }) {
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   `text-2xl font-display font-semibold transition-all border-b border-slate-200/50 dark:border-slate-800/50 pb-3 ${
-                    isActive ? 'text-cyan-600 dark:text-cyan-400 translate-x-2' : 'text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400'
+                    isActive ? 'text-accent translate-x-2' : 'text-muted hover:text-accent'
                   }`
                 }
               >

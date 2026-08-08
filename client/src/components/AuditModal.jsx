@@ -81,7 +81,7 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
       <div className="relative w-full max-w-2xl glass-card rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-2xl my-8 max-h-[92vh] overflow-y-auto">
         
         {/* Close Button */}
@@ -99,7 +99,7 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
           <span>INSTANT AI SEO AUDIT ENGINE</span>
         </div>
 
-        <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-white mb-2">
+        <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-primary mb-2">
           Audit Your Domain Organic Growth Potential
         </h2>
         <p className="text-sm text-slate-300 mb-6 font-normal">

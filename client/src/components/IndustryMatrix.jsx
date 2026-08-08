@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { industriesData } from '../data/industriesData';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 
@@ -16,7 +17,7 @@ export default function IndustryMatrix() {
           <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
             TARGET VERTICALS
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-6">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
             SEO Built Around Your Market
           </h2>
           <p className="text-lg text-slate-300 font-normal leading-relaxed">
@@ -55,7 +56,7 @@ export default function IndustryMatrix() {
                 INDUSTRY SPOTLIGHT
               </div>
 
-              <h3 className="font-display font-extrabold text-3xl text-white mb-4">
+              <h3 className="font-display font-extrabold text-3xl text-primary mb-4">
                 {activeData.name}
               </h3>
 
@@ -77,13 +78,13 @@ export default function IndustryMatrix() {
                 </div>
               </div>
 
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 font-semibold text-slate-950 text-sm hover:opacity-95 transition-opacity"
               >
                 <span>Request {activeData.name} Strategy Brief</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
 
               <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/5 blur-3xl pointer-events-none rounded-full" />
             </div>

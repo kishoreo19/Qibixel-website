@@ -35,13 +35,13 @@ export default function MetricResults() {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 text-center lg:text-left mx-auto lg:mx-0">
-          <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
+          <div className="text-xs font-mono text-accent uppercase tracking-widest mb-3">
             MEASURABLE PERFORMANCE
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-6">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
             SEO That Connects Visibility With Revenue
           </h2>
-          <p className="text-lg text-slate-300 leading-relaxed font-normal">
+          <p className="text-lg text-muted leading-relaxed font-normal">
             Rankings are only one part of SEO. QIBIXEL focuses on the complete organic growth journey — from technical foundations and search intent to qualified traffic, conversions, and measurable business outcomes.
           </p>
         </div>
@@ -53,23 +53,23 @@ export default function MetricResults() {
             return (
               <div
                 key={idx}
-                className="glass-card p-7 rounded-2xl flex flex-col justify-between relative group border border-slate-800"
+                className="glass-card p-7 rounded-2xl flex flex-col justify-between relative group border-border"
               >
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-accent group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-mono text-slate-400 uppercase">QIBIXEL DATA</span>
+                  <span className="text-[10px] font-mono text-muted uppercase">QIBIXEL DATA</span>
                 </div>
 
                 <div>
-                  <div className="font-display font-black text-4xl sm:text-5xl text-white mb-2 tracking-tight group-hover:text-cyan-400 transition-colors">
+                  <div className="font-display font-black text-4xl sm:text-5xl text-primary mb-2 tracking-tight group-hover:text-accent transition-colors">
                     {item.value}
                   </div>
-                  <div className="text-sm font-semibold text-slate-200 mb-1">
+                  <div className="text-sm font-semibold text-secondary mb-1">
                     {item.label}
                   </div>
-                  <div className="text-xs text-slate-400">
+                  <div className="text-xs text-muted">
                     {item.subtext}
                   </div>
                 </div>

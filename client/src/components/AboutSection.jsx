@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Cpu, Zap, Activity } from 'lucide-react';
 
 export default function AboutSection() {
@@ -17,7 +18,7 @@ export default function AboutSection() {
               ABOUT QIBIXEL
             </div>
 
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-6">
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
               We Don’t Chase Rankings. <br />
               <span className="text-cyan-400">We Build Search Growth.</span>
             </h2>
@@ -29,7 +30,7 @@ export default function AboutSection() {
               <p>
                 QIBIXEL combines technical SEO, search intent analysis, content strategy, competitive intelligence, authority building, and performance analytics to create SEO programs built around real business objectives.
               </p>
-              <p className="font-medium text-white">
+              <p className="font-medium text-primary">
                 Our approach is simple: understand the opportunity, prioritize what matters, execute with precision, measure the impact, and continuously improve.
               </p>
             </div>
@@ -52,13 +53,13 @@ export default function AboutSection() {
             </div>
 
             {/* CTA */}
-            <a
-              href="#services"
+            <Link
+              to="/services"
               className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 group"
             >
-              <span>Discover QIBIXEL</span>
+              <span>Discover QIBIXEL Services</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
 
           </div>
 

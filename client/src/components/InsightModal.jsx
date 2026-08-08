@@ -5,7 +5,7 @@ export default function InsightModal({ article, onClose }) {
   if (!article) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
       <div className="relative w-full max-w-3xl glass-card rounded-2xl p-6 sm:p-10 border border-slate-800 shadow-2xl my-8 max-h-[90vh] overflow-y-auto">
         
         {/* Close Button */}
@@ -35,7 +35,7 @@ export default function InsightModal({ article, onClose }) {
         </div>
 
         {/* Title */}
-        <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-white mb-6 leading-tight">
+        <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-primary mb-6 leading-tight">
           {article.title}
         </h2>
 

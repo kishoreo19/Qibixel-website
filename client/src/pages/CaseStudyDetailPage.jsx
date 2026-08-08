@@ -33,7 +33,7 @@ export default function CaseStudyDetailPage({ onOpenAudit }) {
             <span className="text-slate-300 font-semibold">{cs.industry}</span>
           </div>
 
-          <h1 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-6">
+          <h1 className="font-display font-black text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
             {cs.title}
           </h1>
 
@@ -58,13 +58,13 @@ export default function CaseStudyDetailPage({ onOpenAudit }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           <div className="lg:col-span-6 glass-card p-8 rounded-2xl border border-slate-800 space-y-4">
             <div className="text-xs font-mono text-red-400 uppercase tracking-widest font-bold">THE INITIAL CHALLENGE</div>
-            <h3 className="font-display font-bold text-xl text-white">Structural Bottlenecks & Keyword Gaps</h3>
+            <h3 className="font-display font-bold text-xl text-primary">Structural Bottlenecks & Keyword Gaps</h3>
             <p className="text-sm text-slate-300 leading-relaxed font-normal">{cs.challenge}</p>
           </div>
 
           <div className="lg:col-span-6 glass-card p-8 rounded-2xl border border-slate-800 space-y-4">
             <div className="text-xs font-mono text-emerald-400 uppercase tracking-widest font-bold">QIBIXEL STRATEGY DEPLOYED</div>
-            <h3 className="font-display font-bold text-xl text-white">Technical & Content Execution</h3>
+            <h3 className="font-display font-bold text-xl text-primary">Technical & Content Execution</h3>
             <p className="text-sm text-slate-300 leading-relaxed font-normal">{cs.strategy}</p>
           </div>
         </div>

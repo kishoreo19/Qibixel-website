@@ -149,25 +149,25 @@ export default function HeroCanvas() {
   }, [theme]);
 
   return (
-    <div className="relative w-full h-[400px] lg:h-[540px] rounded-2xl overflow-hidden glass-card border border-slate-200 dark:border-slate-800/80 group">
+    <div className="relative w-full h-[400px] lg:h-[540px] rounded-2xl overflow-hidden glass-card border border-border group">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-crosshair" />
       
       {/* Proprietary HUD Overlay Elements */}
-      <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs font-mono text-cyan-600 dark:text-cyan-400">
-        <span className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-ping" />
+      <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-surface/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-border text-xs font-mono text-accent">
+        <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
         LIVE ORGANIC CRAWL MATRIX
       </div>
 
-      <div className="absolute top-4 right-4 z-10 hidden sm:flex items-center gap-3 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">
+      <div className="absolute top-4 right-4 z-10 hidden sm:flex items-center gap-3 bg-surface/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-border text-xs font-mono text-secondary">
         <span>INDEXING: <strong className="text-emerald-600 dark:text-emerald-400">99.8%</strong></span>
         <span className="text-slate-300 dark:text-slate-700">|</span>
-        <span>CV SCORE: <strong className="text-cyan-600 dark:text-cyan-400">98/100</strong></span>
+        <span>CV SCORE: <strong className="text-accent">98/100</strong></span>
       </div>
 
       {/* Floating HUD metrics */}
-      <div className="absolute bottom-6 left-6 z-10 max-w-[240px] bg-white/85 dark:bg-slate-950/85 backdrop-blur-md p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/90 shadow-2xl text-left hidden sm:block">
-        <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">QIBIXEL Growth Signal</div>
-        <div className="text-sm font-semibold text-slate-900 dark:text-white flex items-center justify-between">
+      <div className="absolute bottom-6 left-6 z-10 max-w-[240px] bg-surface/85 backdrop-blur-md p-3.5 rounded-xl border border-border shadow-2xl text-left hidden sm:block">
+        <div className="text-[11px] font-mono text-muted uppercase tracking-wider mb-1">QIBIXEL Growth Signal</div>
+        <div className="text-sm font-semibold text-primary flex items-center justify-between">
           <span>Search Velocity</span>
           <span className="text-emerald-600 dark:text-emerald-400 font-mono text-xs">+342% YoY</span>
         </div>
@@ -176,9 +176,9 @@ export default function HeroCanvas() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 right-6 z-10 hidden md:block bg-white/85 dark:bg-slate-950/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-right font-mono text-xs text-slate-700 dark:text-slate-300">
-        <div className="text-cyan-600 dark:text-cyan-400 font-bold">QIBIXEL NODE ENGINE</div>
-        <div className="text-[10px] text-slate-500 dark:text-slate-400">Autonomous Rank Optimization</div>
+      <div className="absolute bottom-6 right-6 z-10 hidden md:block bg-surface/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-border text-right font-mono text-xs text-secondary">
+        <div className="text-accent font-bold">QIBIXEL NODE ENGINE</div>
+        <div className="text-[10px] text-muted">Autonomous Rank Optimization</div>
       </div>
     </div>
   );

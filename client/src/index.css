@@ -15,30 +15,33 @@
     --color-accent-hover: 8 145 178; /* cyan-600 */
     --color-accent-glow: 34 211 238; /* cyan-400 */
     --color-emerald: 16 185 129; /* emerald-500 */
+    --color-emerald-glow: 52 211 153; /* emerald-400 */
   }
 
   .dark {
-    --color-background: 8 11 17; /* #080B11 */
-    --color-surface: 15 20 32; /* #0F1420 */
-    --color-card: 20 26 41; /* #141A29 */
+    --color-background: 3 7 18; /* #030712 - Rich pitch black */
+    --color-surface: 9 15 28; /* #090F1C - Deep glass slate */
+    --color-card: 15 23 42; /* #0F172A - Slate-900 card surface */
     --color-border: 30 41 59; /* slate-800 */
     --color-text-primary: 248 250 252; /* slate-50 */
-    --color-text-secondary: 203 213 225; /* slate-300 */
-    --color-text-muted: 100 116 139; /* slate-500 */
+    --color-text-secondary: 226 232 240; /* slate-200 */
+    --color-text-muted: 148 163 184; /* slate-400 */
     --color-accent: 6 182 212; /* cyan-500 */
     --color-accent-hover: 34 211 238; /* cyan-400 */
     --color-accent-glow: 103 232 249; /* cyan-300 */
     --color-emerald: 16 185 129; /* emerald-500 */
+    --color-emerald-glow: 110 231 183; /* emerald-300 */
   }
 
   body {
-    @apply bg-background text-primary transition-colors duration-300;
+    @apply bg-background text-primary transition-colors duration-300 font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-600 dark:selection:text-cyan-300;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   @apply bg-background;
@@ -52,24 +55,33 @@
 
 /* Glassmorphic UI utilities */
 .glass-panel {
-  @apply bg-surface/70 backdrop-blur-2xl border border-border;
+  @apply bg-surface/70 backdrop-blur-2xl border border-border/60;
 }
 
 .glass-card {
-  @apply bg-gradient-to-br from-surface/90 to-surface/50 dark:from-card/80 dark:to-surface/60 backdrop-blur-xl border border-border transition-all duration-300 shadow-sm dark:shadow-none cursor-pointer active:scale-[0.98];
+  position: relative;
+  background: linear-gradient(135deg, rgb(var(--color-surface) / 0.8) 0%, rgb(var(--color-surface) / 0.3) 100%);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgb(var(--color-border) / 0.5);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -2px rgb(0 0 0 / 0.05);
 }
 
 .glass-card:hover {
-  @apply border-accent/40 shadow-lg shadow-accent/10 dark:shadow-[0_8px_30px_rgba(6,182,212,0.08)] -translate-y-1;
+  border-color: rgb(var(--color-accent) / 0.5);
+  box-shadow: 0 20px 40px -15px rgb(var(--color-accent) / 0.15),
+              0 0 40px -5px rgb(var(--color-accent) / 0.05);
+  transform: translateY(-4px);
 }
 
 button, a {
-  @apply active:scale-[0.98] transition-transform duration-200;
+  @apply active:scale-[0.97] transition-all duration-300;
 }
 button:focus-visible, a:focus-visible {
   @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
 }
 
+/* Glow Border Effect */
 .glow-border-cyan {
   position: relative;
 }
@@ -77,32 +89,63 @@ button:focus-visible, a:focus-visible {
   content: '';
   position: absolute;
   inset: -1px;
-  background: linear-gradient(90deg, rgba(6,182,212,0.6), rgba(16,185,129,0.3), rgba(6,182,212,0.6));
+  background: linear-gradient(90deg, rgb(var(--color-accent) / 0.6), rgb(var(--color-emerald) / 0.4), rgb(var(--color-accent) / 0.6));
   border-radius: inherit;
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 .glow-border-cyan:hover::before {
   opacity: 1;
 }
 
-/* Subtle grid texture overlay */
+/* Radial Masked Premium Grid Texture Overlay */
 .bg-grid-overlay {
-  background-image: linear-gradient(to right, rgb(var(--color-text-primary) / 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgb(var(--color-text-primary) / 0.03) 1px, transparent 1px);
+  position: relative;
+}
+.bg-grid-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgb(var(--color-text-primary) / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--color-text-primary) / 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 15%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Radar pulse animation */
-@keyframes ping-slow {
-  0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.08); opacity: 0.3; }
-  100% { transform: scale(0.95); opacity: 0.8; }
+/* Infinite Horizontal Marquee Scroll */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.animate-ping-slow {
-  animation: ping-slow 4s ease-in-out infinite;
+.animate-marquee-slow {
+  animation: marquee 35s linear infinite;
+}
+
+/* Slow Pulse & Hover Glows */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+/* Accordion Smooth Height Transition */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.accordion-content-open {
+  grid-template-rows: 1fr;
+}
+.accordion-inner {
+  overflow: hidden;
 }
 
 @layer utilities {
@@ -110,7 +153,7 @@ button:focus-visible, a:focus-visible {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-emerald;
   }
 
-  /* Map legacy hardcoded colors to new semantic variables */
+  /* Map legacy hardcoded colors to semantic theme variables */
   .text-slate-900, .dark\:text-white, .text-white, .text-slate-800 { 
     color: rgb(var(--color-text-primary)) !important; 
   }
@@ -135,7 +178,18 @@ button:focus-visible, a:focus-visible {
     border-color: rgb(var(--color-border)) !important; 
   }
   
-  /* Additional overrides for dynamic hover states on specific hardcoded classes if any were missed */
   .hover\:text-white:hover { color: rgb(var(--color-text-primary)) !important; }
   .hover\:text-slate-200:hover { color: rgb(var(--color-text-secondary)) !important; }
 }
+
+/* Fixed contrast utilities for dark mockup containers (e.g. terminals, GSC tables) in light/dark modes */
+.text-white-always { color: #ffffff !important; }
+.text-slate-100-always { color: #f8fafc !important; }
+.text-slate-200-always { color: #e2e8f0 !important; }
+.text-slate-300-always { color: #cbd5e1 !important; }
+.text-slate-400-always { color: #94a3b8 !important; }
+.text-slate-500-always { color: #64748b !important; }
+.bg-slate-950-always { background-color: #020617 !important; }
+.bg-slate-900-always { background-color: #0f172a !important; }
+.border-slate-800-always { border-color: #1e293b !important; }
+

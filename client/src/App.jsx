@@ -19,13 +19,20 @@ import ContactPage from './pages/ContactPage';
 
 export default function App() {
   const [auditModalOpen, setAuditModalOpen] = useState(false);
+  const [initialDomain, setInitialDomain] = useState('');
 
-  const handleOpenAudit = () => {
+  const handleOpenAudit = (domain = '') => {
+    if (typeof domain === 'string' && domain) {
+      setInitialDomain(domain);
+    } else {
+      setInitialDomain('');
+    }
     setAuditModalOpen(true);
   };
 
   const handleCloseAudit = () => {
     setAuditModalOpen(false);
+    setInitialDomain('');
   };
 
   return (
@@ -66,6 +73,7 @@ export default function App() {
         <AuditModal
           isOpen={auditModalOpen}
           onClose={handleCloseAudit}
+          initialDomain={initialDomain}
         />
 
         </div>

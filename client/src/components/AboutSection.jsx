@@ -65,17 +65,17 @@ export default function AboutSection() {
 
           {/* Right Abstract QIBIXEL Data Visualization Column */}
           <div className="lg:col-span-6 w-full">
-            <div className="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800 relative overflow-hidden">
+            <div className="glass-card rounded-2xl p-6 sm:p-8 border border-border/85 relative overflow-hidden">
               
-              <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
-                  <Activity className="w-4 h-4" />
+              <div className="flex items-center justify-between border-b border-border/60 pb-4 mb-6">
+                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
+                  <Activity className="w-4 h-4 animate-pulse" />
                   <span>QIBIXEL FRAMEWORK DIAGNOSTIC</span>
                 </div>
-                <div className="flex gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                <div className="flex gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block shadow" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block shadow" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block shadow" />
                 </div>
               </div>
 
@@ -89,36 +89,34 @@ export default function AboutSection() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`py-2 px-3 rounded-lg text-xs font-mono transition-all ${
+                    className={`py-2 px-3 rounded-lg text-xs font-mono transition-all duration-300 ${
                       activeTab === tab.id
-                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold'
-                        : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-slate-800'
+                        ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold shadow-md'
+                        : 'bg-card/40 text-slate-400 hover:text-slate-200 border border-border/70 hover:bg-slate-900/10'
                     }`}
                   >
                     {tab.label}
                   </button>
                 ))}
-              </div>
-
-              {/* Visualization Dynamic Graphic */}
-              <div className="bg-slate-950 p-5 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 space-y-4">
+              </div>              {/* Visualization Dynamic Graphic */}
+              <div className="bg-slate-950-always p-5 rounded-xl border border-slate-800-always font-mono text-xs text-slate-300-always space-y-4 shadow-2xl">
                 {activeTab === 'technical' && (
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center text-slate-400">
+                    <div className="flex justify-between items-center text-slate-400-always">
                       <span>Crawl Budget Efficiency</span>
-                      <span className="text-emerald-400">99.4%</span>
+                      <span className="text-emerald-450 font-bold">99.4%</span>
                     </div>
-                    <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
-                      <div className="bg-emerald-400 h-full w-[99.4%]" />
+                    <div className="w-full bg-slate-900-always h-2 rounded-full overflow-hidden border border-slate-800-always">
+                      <div className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full w-[99.4%]" />
                     </div>
-                    <div className="flex justify-between items-center text-slate-400 pt-1">
+                    <div className="flex justify-between items-center text-slate-400-always pt-1">
                       <span>Core Web Vitals INP</span>
-                      <span className="text-cyan-400">42ms (Good)</span>
+                      <span className="text-cyan-400 font-bold">42ms (Good)</span>
                     </div>
-                    <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
-                      <div className="bg-cyan-400 h-full w-[92%]" />
+                    <div className="w-full bg-slate-900-always h-2 rounded-full overflow-hidden border border-slate-800-always">
+                      <div className="bg-gradient-to-r from-cyan-500 to-teal-450 h-full w-[92%]" />
                     </div>
-                    <div className="text-[11px] text-slate-400 bg-slate-900/80 p-3 rounded border border-slate-800 mt-2">
+                    <div className="text-[10px] text-slate-300-always bg-slate-900-always p-3 rounded border border-slate-800-always mt-2">
                       &gt; Log audit: Zero indexation blocks detected. Canonical tags validated across all rendering engines.
                     </div>
                   </div>
@@ -126,21 +124,21 @@ export default function AboutSection() {
 
                 {activeTab === 'intent' && (
                   <div className="space-y-3">
-                    <div className="flex justify-between text-slate-400">
+                    <div className="flex justify-between text-slate-400-always">
                       <span>Commercial Intent Signals</span>
-                      <span className="text-cyan-400">High Conversion Priority</span>
+                      <span className="text-cyan-400 font-bold">High Conversion Priority</span>
                     </div>
-                    <div className="grid grid-cols-2 gap-2 pt-1">
-                      <div className="bg-slate-900 p-2.5 rounded border border-slate-800 text-[11px]">
-                        <div className="text-slate-400">Target Keywords</div>
-                        <div className="text-white font-bold">Category Leaders</div>
+                    <div className="grid grid-cols-2 gap-2.5 pt-1">
+                      <div className="bg-slate-900-always p-2.5 rounded border border-slate-800-always text-[10px]">
+                        <div className="text-slate-400-always">Target Keywords</div>
+                        <div className="text-white-always font-bold">Category Leaders</div>
                       </div>
-                      <div className="bg-slate-900 p-2.5 rounded border border-slate-800 text-[11px]">
-                        <div className="text-slate-400">Topic Clusters</div>
-                        <div className="text-emerald-400 font-bold">100% Coverage</div>
+                      <div className="bg-slate-900-always p-2.5 rounded border border-slate-800-always text-[10px]">
+                        <div className="text-slate-400-always">Topic Clusters</div>
+                        <div className="text-emerald-450 font-bold">100% Coverage</div>
                       </div>
                     </div>
-                    <div className="text-[11px] text-slate-400 bg-slate-900/80 p-3 rounded border border-slate-800">
+                    <div className="text-[10px] text-slate-300-always bg-slate-900-always p-3 rounded border border-slate-800-always">
                       &gt; User Journey: Intent mapped directly to landing page acquisition funnels.
                     </div>
                   </div>
@@ -148,20 +146,20 @@ export default function AboutSection() {
 
                 {activeTab === 'analytics' && (
                   <div className="space-y-3">
-                    <div className="flex justify-between text-slate-400">
+                    <div className="flex justify-between text-slate-400-always">
                       <span>Organic Attribution Lift</span>
-                      <span className="text-emerald-400">+184% MoM</span>
+                      <span className="text-emerald-450 font-bold">+184% MoM</span>
                     </div>
-                    <div className="h-20 flex items-end justify-between gap-1.5 pt-2">
+                    <div className="h-20 flex items-end justify-between gap-2 pt-2 px-1">
                       {[35, 42, 50, 68, 75, 88, 96, 110, 135, 160].map((h, i) => (
                         <div
                           key={i}
                           style={{ height: `${(h / 160) * 100}%` }}
-                          className="w-full bg-gradient-to-t from-cyan-600 to-emerald-400 rounded-t"
+                          className="w-full bg-gradient-to-t from-cyan-600 to-emerald-400 rounded-t-sm shadow-sm"
                         />
                       ))}
                     </div>
-                    <div className="text-[11px] text-slate-400 bg-slate-900/80 p-3 rounded border border-slate-800">
+                    <div className="text-[10px] text-slate-300-always bg-slate-900-always p-3 rounded border border-slate-800-always">
                       &gt; Continuous loop: Real-time telemetry monitoring search ranking fluctuations.
                     </div>
                   </div>

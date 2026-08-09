@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, Search, ShieldCheck, CheckCircle2, AlertTriangle, ArrowRight, Loader2, RefreshCw } from 'lucide-react';
 
-export default function AuditModal({ isOpen, onClose, onScrollContact }) {
+export default function AuditModal({ isOpen, onClose, initialDomain }) {
+  const navigate = useNavigate();
   const [domainInput, setDomainInput] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [report, setReport] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
   const [currentStep, setCurrentStep] = useState(0);
-
-  if (!isOpen) return null;
 
   const analysisSteps = [
     'Connecting to QIBIXEL Crawl Engine...',
@@ -18,13 +18,21 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
     'Generating AI Strategic SEO Roadmap...'
   ];
 
-  const handleRunAudit = async (e) => {
-    e.preventDefault();
-    if (!domainInput.trim()) {
-      setErrorMsg('Please enter a domain URL.');
-      return;
+  useEffect(() => {
+    if (isOpen) {
+      if (initialDomain) {
+        setDomainInput(initialDomain);
+        triggerAudit(initialDomain);
+      } else {
+        setDomainInput('');
+        setReport(null);
+      }
     }
+  }, [isOpen, initialDomain]);
 
+  if (!isOpen) return null;
+
+  const triggerAudit = async (domain) => {
     setIsAnalyzing(true);
     setErrorMsg('');
     setReport(null);
@@ -43,7 +51,7 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
       const response = await fetch('/api/audit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ domain: domainInput })
+        body: JSON.stringify({ domain })
       });
 
       const data = await response.json();
@@ -51,14 +59,23 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
         setReport(data);
       } else {
         // Fallback local calculations if offline
-        setReport(generateFallbackReport(domainInput));
+        setReport(generateFallbackReport(domain));
       }
     } catch (err) {
-      setReport(generateFallbackReport(domainInput));
+      setReport(generateFallbackReport(domain));
     } finally {
       clearInterval(interval);
       setIsAnalyzing(false);
     }
+  };
+
+  const handleRunAudit = (e) => {
+    e.preventDefault();
+    if (!domainInput.trim()) {
+      setErrorMsg('Please enter a domain URL.');
+      return;
+    }
+    triggerAudit(domainInput.trim());
   };
 
   const generateFallbackReport = (domain) => {
@@ -147,13 +164,13 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
               <span>PROGRESS: STAGE {currentStep + 1} OF 5</span>
               <span>{Math.round(((currentStep + 1) / 5) * 100)}%</span>
             </div>
-            <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+            <div className="w-full bg-slate-900-always h-2 rounded-full overflow-hidden border border-slate-800-always">
               <div
                 className="bg-gradient-to-r from-cyan-500 to-emerald-400 h-full transition-all duration-300"
                 style={{ width: `${((currentStep + 1) / 5) * 100}%` }}
               />
             </div>
-            <div className="text-xs font-mono text-slate-300 flex items-center gap-2">
+            <div className="text-xs font-mono text-slate-300-always flex items-center gap-2">
               <Loader2 className="w-3.5 h-3.5 text-cyan-400 animate-spin" />
               <span>{analysisSteps[currentStep]}</span>
             </div>
@@ -165,17 +182,17 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
           <div className="space-y-6 my-4">
             
             {/* Top Score Banner */}
-            <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-5 rounded-xl bg-slate-950-always border border-slate-800-always flex flex-col sm:flex-row items-center justify-between gap-4 animate-fade-in-up">
               <div>
-                <div className="text-xs font-mono text-slate-400 uppercase">AUDIT TARGET</div>
-                <div className="text-xl font-bold text-white font-mono">{report.domain}</div>
-                <div className="text-[11px] text-slate-500 font-mono">Generated: {report.generatedAt}</div>
+                <div className="text-xs font-mono text-slate-400-always uppercase">AUDIT TARGET</div>
+                <div className="text-xl font-bold text-white-always font-mono">{report.domain}</div>
+                <div className="text-[11px] text-slate-400-always font-mono">Generated: {report.generatedAt}</div>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="text-center">
                   <div className="font-display font-black text-3xl text-cyan-400">{report.scores.overall}/100</div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase">OVERALL SCORE</div>
+                  <div className="text-[10px] font-mono text-slate-400-always uppercase">OVERALL SCORE</div>
                 </div>
               </div>
             </div>
@@ -188,8 +205,8 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
                 { label: 'Site Speed', score: report.scores.speed },
                 { label: 'Authority', score: report.scores.authority },
               ].map((s, idx) => (
-                <div key={idx} className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-center">
-                  <div className="text-[10px] font-mono text-slate-400 uppercase mb-1">{s.label}</div>
+                <div key={idx} className="p-3 rounded-lg bg-slate-900-always border border-slate-800-always text-center animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
+                  <div className="text-[10px] font-mono text-slate-400-always uppercase mb-1">{s.label}</div>
                   <div className="font-mono font-bold text-lg text-emerald-400">{s.score}%</div>
                 </div>
               ))}
@@ -202,9 +219,9 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
               </h4>
               <div className="space-y-2">
                 {report.criticalFindings.map((finding, idx) => (
-                  <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs">
+                  <div key={idx} className="p-3.5 rounded-xl bg-slate-900-always border border-slate-800-always text-xs">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold text-white flex items-center gap-1.5">
+                      <span className="font-bold text-white-always flex items-center gap-1.5">
                         <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
                         {finding.title}
                       </span>
@@ -212,7 +229,7 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
                         {finding.severity}
                       </span>
                     </div>
-                    <p className="text-slate-300 leading-relaxed">{finding.description}</p>
+                    <p className="text-slate-300-always leading-relaxed">{finding.description}</p>
                   </div>
                 ))}
               </div>
@@ -225,7 +242,7 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
               </h4>
               <div className="space-y-2">
                 {report.recommendedActions.map((act, aIdx) => (
-                  <div key={aIdx} className="flex items-center gap-2 text-xs text-slate-300">
+                  <div key={aIdx} className="flex items-center gap-2 text-xs text-slate-300-always">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                     <span>{act}</span>
                   </div>
@@ -234,7 +251,7 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
             </div>
 
             {/* Footer Action */}
-            <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
               <button
                 onClick={() => { setReport(null); setDomainInput(''); }}
                 className="text-xs font-mono text-slate-400 hover:text-white flex items-center gap-1"
@@ -246,9 +263,9 @@ export default function AuditModal({ isOpen, onClose, onScrollContact }) {
               <button
                 onClick={() => {
                   onClose();
-                  if (onScrollContact) onScrollContact();
+                  navigate('/contact');
                 }}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 font-semibold text-slate-950 text-xs"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 font-semibold text-slate-950 text-xs hover:shadow-cyan-500/25 hover:shadow-lg transition-all duration-300"
               >
                 Schedule Deep Technical Audit Review →
               </button>

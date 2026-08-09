@@ -1,5 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, Layers, Award, Target, ArrowUpRight, CheckCircle2, ChevronRight, Activity, Search, ShieldCheck } from 'lucide-react';
+
+function AnimatedCounter({ value, duration = 1500 }) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const elementRef = useRef(null);
+
+  // Parse numeric target and suffix
+  const match = value ? value.match(/^([^\d]*)([\d.]+)(.*)$/) : null;
+  const prefix = match ? match[1] : '';
+  const numericTarget = match ? parseFloat(match[2]) : 0;
+  const suffix = match ? match[3] : '';
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentEl = elementRef.current;
+    if (currentEl) {
+      observer.observe(currentEl);
+    }
+
+    return () => {
+      if (currentEl) {
+        observer.unobserve(currentEl);
+      }
+    };
+  }, [hasAnimated]);
+
+  useEffect(() => {
+    if (!hasAnimated || isNaN(numericTarget)) return;
+
+    let start = 0;
+    const end = numericTarget;
+    if (start === end) {
+      setCount(end);
+      return;
+    }
+
+    let startTime = null;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const progressPercentage = Math.min(progress / duration, 1);
+      
+      // Easing: easeOutQuad
+      const easeProgress = progressPercentage * (2 - progressPercentage);
+      const currentCount = easeProgress * (end - start) + start;
+
+      if (end < 10) {
+        setCount(parseFloat(currentCount.toFixed(1)));
+      } else {
+        setCount(Math.floor(currentCount));
+      }
+
+      if (progressPercentage < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [hasAnimated, numericTarget, duration]);
+
+  if (isNaN(numericTarget)) {
+    return <span>{value}</span>;
+  }
+
+  return (
+    <span ref={elementRef} className="inline-block">
+      {prefix}
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 export default function MetricResults() {
   const [activeTab, setActiveTab] = useState('traffic');
@@ -90,7 +173,7 @@ export default function MetricResults() {
                   <div className="min-w-0">
                     <div className="flex items-baseline gap-2">
                       <span className="font-display font-black text-2xl tracking-tight text-primary">
-                        {item.value}
+                        <AnimatedCounter value={item.value} />
                       </span>
                       <span className="text-xs font-semibold text-secondary truncate">
                         {item.label}

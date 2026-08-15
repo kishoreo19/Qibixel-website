@@ -132,8 +132,9 @@ export default function MetricResults() {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-grid-overlay">
-      <div className="absolute top-1/2 left-0 w-[450px] h-[300px] bg-cyan-500/5 blur-[120px] pointer-events-none rounded-full" />
+    <section className="py-24 relative overflow-hidden bg-grid-overlay max-w-full">
+      <div className="absolute top-1/2 left-0 w-full max-w-[450px] h-[300px] bg-cyan-500/5 blur-[120px] pointer-events-none rounded-full overflow-hidden" />
+
       
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         

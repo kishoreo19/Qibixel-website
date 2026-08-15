@@ -20,8 +20,9 @@ export default function Hero({ onOpenAudit }) {
   return (
     <section className="relative pt-32 lg:pt-40 pb-20 overflow-hidden bg-grid-overlay">
       {/* Ambient background glow elements */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-cyan-500/10 blur-[150px] pointer-events-none rounded-full animate-pulse-glow" />
-      <div className="absolute top-1/3 right-10 w-[500px] h-[350px] bg-emerald-500/5 blur-[130px] pointer-events-none rounded-full" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[300px] sm:h-[400px] bg-cyan-500/10 blur-[120px] sm:blur-[150px] pointer-events-none rounded-full animate-pulse-glow overflow-hidden" />
+      <div className="absolute top-1/3 right-0 sm:right-10 w-full max-w-[500px] h-[250px] sm:h-[350px] bg-emerald-500/5 blur-[100px] sm:blur-[130px] pointer-events-none rounded-full overflow-hidden" />
+
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
         

@@ -4,10 +4,11 @@ import ScrollReveal from './ScrollReveal';
 
 export default function FinalCTA({ onOpenAudit, onScrollContact }) {
   return (
-    <section className="py-24 relative overflow-hidden bg-grid-overlay bg-background transition-colors duration-300">
+    <section className="py-24 relative overflow-hidden bg-grid-overlay bg-background transition-colors duration-300 max-w-full">
       
       {/* Background glow flares */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-accent/10 blur-[150px] pointer-events-none rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[700px] h-[300px] sm:h-[400px] bg-accent/10 blur-[120px] sm:blur-[150px] pointer-events-none rounded-full overflow-hidden" />
+
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal variant="scale-up">

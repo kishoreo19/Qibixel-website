@@ -42,7 +42,8 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <ScrollProgressBar />
-        <div className="min-h-screen relative bg-background text-primary selection:bg-accent/20 selection:text-accent flex flex-col justify-between transition-colors duration-300 pb-16 lg:pb-0">
+        <div className="min-h-screen relative bg-background text-primary selection:bg-accent/20 selection:text-accent flex flex-col justify-between transition-colors duration-300 pb-16 lg:pb-0 overflow-x-hidden max-w-full">
+
           <div className="absolute inset-0 z-0 pointer-events-none bg-grid-pattern-light dark:bg-grid-pattern opacity-50"></div>
 
           

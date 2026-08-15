@@ -1,0 +1,16 @@
+{
+  "short_name": "QIBIXEL",
+  "name": "QIBIXEL — Organic Search & Web Engineering",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#060814",
+  "theme_color": "#060814",
+  "display": "standalone",
+  "orientation": "portrait"
+}

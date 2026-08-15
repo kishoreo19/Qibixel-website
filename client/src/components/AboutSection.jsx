@@ -159,9 +159,10 @@ export default function AboutSection() {
               </div>
 
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
+
 
       </div>
     </section>

@@ -25,14 +25,16 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'Outfit', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
-        display: ['Outfit', 'Inter', 'sans-serif']
+        sans: ['Inter', 'Space Grotesk', 'Outfit', 'sans-serif'],
+        mono: ['"Share Tech Mono"', '"JetBrains Mono"', 'monospace'],
+        display: ['"Space Grotesk"', 'Syne', 'Outfit', 'sans-serif'],
+        tech: ['"Share Tech Mono"', 'monospace']
       },
       backgroundImage: {
-        'grid-pattern': "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)",
-        'grid-pattern-light': "radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px)",
-        'cyan-glow': "radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(6, 182, 212, 0.12), transparent 40%)"
+        'grid-pattern': "linear-gradient(to right, rgba(140, 255, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(140, 255, 0, 0.05) 1px, transparent 1px)",
+        'grid-pattern-light': "linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)",
+        'cyan-glow': "radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(140, 255, 0, 0.15), transparent 40%)",
+        'lime-glow': "radial-gradient(800px circle at 50% 30%, rgba(140, 255, 0, 0.15), transparent 60%)"
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',

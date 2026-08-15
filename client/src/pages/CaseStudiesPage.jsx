@@ -13,13 +13,13 @@ export default function CaseStudiesPage({ onOpenAudit }) {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
         <div className="max-w-3xl">
-          <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
-            VERIFIED CASE STUDIES
+          <div className="text-xs font-mono text-accent uppercase tracking-widest mb-3 font-bold">
+            / VERIFIED CASE STUDIES
           </div>
-          <h1 className="font-display font-black text-4xl sm:text-6xl text-primary tracking-tight leading-tight mb-6">
+          <h1 className="font-display font-black text-4xl sm:text-6xl text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
             Proof Over Promises.
           </h1>
-          <p className="text-xl text-slate-300 font-normal leading-relaxed">
+          <p className="text-xl text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
             Detailed case studies demonstrating how QIBIXEL technical restructuring, search intent alignment, and authority building deliver measurable revenue impact.
           </p>
         </div>

@@ -35,28 +35,28 @@ export default function InsightModal({ article, onClose }) {
         </div>
 
         {/* Title */}
-        <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-primary mb-6 leading-tight">
+        <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white mb-6 leading-tight">
           {article.title}
         </h2>
 
         {/* Excerpt */}
-        <p className="text-base text-cyan-300/90 font-medium italic border-l-2 border-cyan-400 pl-4 py-1 mb-8">
+        <p className="text-base text-accent font-medium italic border-l-2 border-accent pl-4 py-1 mb-8">
           "{article.excerpt}"
         </p>
 
         {/* Full Content */}
-        <div className="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed space-y-4 font-normal">
+        <div className="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 text-sm leading-relaxed space-y-4 font-normal">
           {article.content.split('\n\n').map((paragraph, idx) => (
             <p key={idx}>{paragraph}</p>
           ))}
         </div>
 
         {/* Modal Footer */}
-        <div className="mt-10 pt-6 border-t border-slate-800 flex items-center justify-between">
-          <span className="text-xs font-mono text-slate-400">QIBIXEL EDITORIAL INSIGHTS</span>
+        <div className="mt-10 pt-6 border-t border-border flex items-center justify-between">
+          <span className="text-xs font-mono text-muted">QIBIXEL EDITORIAL INSIGHTS</span>
           <button
             onClick={onClose}
-            className="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-200 hover:text-white"
+            className="px-5 py-2.5 rounded-xl bg-surface border border-border text-xs font-semibold text-slate-900 dark:text-white hover:text-accent cursor-pointer"
           >
             Close Article
           </button>

@@ -45,18 +45,13 @@ export default function Navbar({ onOpenAudit }) {
         <div className="flex items-center justify-between">
           
           {/* Brand Logo Link to Home */}
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 p-[1.5px] shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-all duration-300">
-              <div className="w-full h-full bg-[#080B11] dark:bg-[#030712] rounded-[7px] flex items-center justify-center">
-                <span className="font-display font-black text-accent text-lg tracking-tighter group-hover:scale-110 transition-transform">Q</span>
-              </div>
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-md bg-[#8CFF00] text-slate-950 flex items-center justify-center font-black text-sm tracking-tighter shadow-md dark:shadow-[0_0_20px_rgba(140,255,0,0.4)] group-hover:scale-105 transition-transform duration-300">
+              <span className="font-mono font-black text-black">QX</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-extrabold text-xl tracking-tight text-primary group-hover:text-accent transition-colors">
+              <span className="font-display font-black text-xl tracking-[0.18em] text-slate-900 dark:text-white group-hover:text-accent transition-colors">
                 QIBIXEL
-              </span>
-              <span className="text-[9px] font-mono text-slate-400 dark:text-slate-500 tracking-widest uppercase -mt-1 font-bold">
-                SEO Consult
               </span>
             </div>
           </Link>
@@ -68,10 +63,10 @@ export default function Navbar({ onOpenAudit }) {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-xs font-mono uppercase tracking-wider px-3.5 py-2 rounded-lg transition-all duration-200 ${
+                  `text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-md transition-all duration-200 ${
                     isActive 
-                      ? 'text-accent bg-cyan-500/10 border border-cyan-500/20 font-bold' 
-                      : 'text-muted hover:text-primary hover:bg-slate-200/40 dark:hover:bg-slate-800/40 border border-transparent'
+                      ? 'text-accent bg-accent/10 border border-accent/30 font-bold' 
+                      : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/5 border border-transparent'
                   }`
                 }
               >
@@ -84,22 +79,18 @@ export default function Navbar({ onOpenAudit }) {
           <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-200/50 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-850 transition-all focus:outline-none border border-transparent hover:border-border/60"
+              className="p-2.5 rounded-lg text-slate-700 hover:text-slate-950 hover:bg-slate-200/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/5 transition-all focus:outline-none border border-slate-300 dark:border-white/10"
               aria-label="Toggle Theme"
             >
-              {theme === 'dark' ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+              {theme === 'dark' ? <Sun className="w-4.5 h-4.5 text-[#8CFF00]" /> : <Moon className="w-4.5 h-4.5 text-slate-800" />}
             </button>
             <button
               onClick={onOpenAudit}
-              className="relative group overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 p-[1px] focus:outline-none shadow-md shadow-cyan-500/10 hover:shadow-cyan-500/25 transition-all"
+              className="px-6 py-2.5 rounded-lg bg-[#8CFF00] hover:bg-[#9eff26] text-black font-extrabold text-xs uppercase tracking-wider shadow-md dark:shadow-[0_0_20px_rgba(140,255,0,0.4)] hover:scale-[1.02] transition-all duration-300 flex items-center gap-2 cursor-pointer"
             >
-              <div className="px-5 py-2.5 rounded-[11px] bg-background group-hover:bg-transparent transition-all duration-300 flex items-center gap-2">
-                <Search className="w-4 h-4 text-accent group-hover:text-white dark:group-hover:text-slate-950 transition-colors" />
-                <span className="text-xs font-semibold tracking-wide text-primary group-hover:text-white dark:group-hover:text-slate-950">
-                  Get an SEO Audit
-                </span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-accent group-hover:text-white dark:group-hover:text-slate-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </div>
+              <Search className="w-3.5 h-3.5 text-black stroke-[3]" />
+              <span>Get Audit</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-black stroke-[3]" />
             </button>
           </div>
 

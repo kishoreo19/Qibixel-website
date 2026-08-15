@@ -61,33 +61,33 @@ export default function ContactSection() {
           {/* Left Contact Info */}
           <div className="lg:col-span-5 flex flex-col justify-between h-full">
             <div>
-              <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
-                INITIATE STRATEGY DISCOVERY
+              <div className="text-xs font-mono text-accent uppercase tracking-widest mb-3 font-bold">
+                / INITIATE STRATEGY DISCOVERY
               </div>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
+              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
                 Let’s Talk About Your Growth.
               </h2>
-              <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed mb-8">
                 Tell us where you are today, where you want to go, and what is getting in the way. We’ll help identify the SEO opportunities worth pursuing.
               </p>
 
-              <div className="space-y-4 pt-6 border-t border-slate-800/80 font-mono text-xs text-slate-400">
+              <div className="space-y-4 pt-6 border-t border-border font-mono text-xs text-muted">
                 <div>
-                  <span className="text-slate-500 uppercase block mb-1">Direct Inquiries</span>
-                  <a href="mailto:growth@qibixel.com" className="text-cyan-400 font-semibold text-sm hover:underline">
+                  <span className="text-muted uppercase block mb-1 font-bold">Direct Inquiries</span>
+                  <a href="mailto:growth@qibixel.com" className="text-accent font-bold text-sm hover:underline">
                     growth@qibixel.com
                   </a>
                 </div>
                 <div>
-                  <span className="text-slate-500 uppercase block mb-1">Response Velocity</span>
-                  <span className="text-slate-200">Within 24 Hours on Business Days</span>
+                  <span className="text-muted uppercase block mb-1 font-bold">Response Velocity</span>
+                  <span className="text-slate-900 dark:text-slate-200 font-medium">Within 24 Hours on Business Days</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-12 p-6 rounded-2xl glass-card border border-slate-800 hidden lg:block">
-              <div className="text-xs font-mono text-cyan-400 mb-2">QIBIXEL CONFIDENTIALITY GUARANTEE</div>
-              <p className="text-xs text-slate-400 leading-relaxed">
+            <div className="mt-12 p-6 rounded-2xl glass-card border border-border bg-surface hidden lg:block">
+              <div className="text-xs font-mono text-accent font-bold mb-2">QIBIXEL CONFIDENTIALITY GUARANTEE</div>
+              <p className="text-xs text-muted leading-relaxed">
                 All domain assets, analytics credentials, and market strategies shared with QIBIXEL are protected under standard non-disclosure terms.
               </p>
             </div>
@@ -95,17 +95,17 @@ export default function ContactSection() {
 
           {/* Right Contact Form / Success View */}
           <div className="lg:col-span-7">
-            <div className="glass-card rounded-2xl p-8 sm:p-10 border border-slate-800 relative">
+            <div className="glass-card rounded-2xl p-8 sm:p-10 border border-border bg-surface relative shadow-xl">
               
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
                   <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-primary">
+                  <h3 className="font-display font-bold text-2xl text-slate-900 dark:text-white">
                     Enquiry Received
                   </h3>
-                  <p className="text-base text-slate-300 max-w-md mx-auto leading-relaxed">
+                  <p className="text-base text-slate-700 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
                     Thanks for reaching out. Your enquiry has been received. Our team will review it and get back to you shortly.
                   </p>
                   <button
@@ -138,7 +138,7 @@ export default function ContactSection() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-2 uppercase">
+                      <label className="block text-xs font-mono text-muted mb-2 uppercase font-bold">
                         Full Name *
                       </label>
                       <input
@@ -148,12 +148,12 @@ export default function ContactSection() {
                         onChange={handleChange}
                         required
                         placeholder="Alex Morgan"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-card border border-border text-slate-900 dark:text-white text-sm focus:border-accent focus:outline-none transition-colors font-medium"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-2 uppercase">
+                      <label className="block text-xs font-mono text-muted mb-2 uppercase font-bold">
                         Work Email *
                       </label>
                       <input
@@ -163,14 +163,14 @@ export default function ContactSection() {
                         onChange={handleChange}
                         required
                         placeholder="alex@company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-card border border-border text-slate-900 dark:text-white text-sm focus:border-accent focus:outline-none transition-colors font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-2 uppercase">
+                      <label className="block text-xs font-mono text-muted mb-2 uppercase font-bold">
                         Company
                       </label>
                       <input
@@ -179,12 +179,12 @@ export default function ContactSection() {
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Acme Growth Inc."
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-card border border-border text-slate-900 dark:text-white text-sm focus:border-accent focus:outline-none transition-colors font-medium"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-2 uppercase">
+                      <label className="block text-xs font-mono text-muted mb-2 uppercase font-bold">
                         Website URL
                       </label>
                       <input
@@ -193,21 +193,21 @@ export default function ContactSection() {
                         value={formData.websiteUrl}
                         onChange={handleChange}
                         placeholder="https://company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-card border border-border text-slate-900 dark:text-white text-sm focus:border-accent focus:outline-none transition-colors font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-2 uppercase">
+                      <label className="block text-xs font-mono text-muted mb-2 uppercase font-bold">
                         Industry
                       </label>
                       <select
                         name="industry"
                         value={formData.industry}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-card border border-border text-slate-900 dark:text-white text-sm focus:border-accent focus:outline-none transition-colors font-medium"
                       >
                         <option value="SaaS & Technology">SaaS & Technology</option>
                         <option value="E-commerce">E-commerce</option>
@@ -223,14 +223,14 @@ export default function ContactSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-2 uppercase">
+                      <label className="block text-xs font-mono text-muted mb-2 uppercase font-bold">
                         Main SEO Challenge
                       </label>
                       <select
                         name="mainChallenge"
                         value={formData.mainChallenge}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-card border border-border text-slate-900 dark:text-white text-sm focus:border-accent focus:outline-none transition-colors font-medium"
                       >
                         <option value="Technical SEO & Crawling">Technical SEO & Crawling</option>
                         <option value="Content Strategy & Gaps">Content Strategy & Gaps</option>
@@ -242,7 +242,7 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-400 mb-2 uppercase">
+                    <label className="block text-xs font-mono text-muted mb-2 uppercase font-bold">
                       Message *
                     </label>
                     <textarea
@@ -252,7 +252,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       placeholder="Tell us about your organic search goals and current challenges..."
-                      className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-card border border-border text-slate-900 dark:text-white text-sm focus:border-accent focus:outline-none transition-colors font-medium"
                     />
                   </div>
 

@@ -116,10 +116,10 @@ export default function AuditModal({ isOpen, onClose, initialDomain }) {
           <span>INSTANT AI SEO AUDIT ENGINE</span>
         </div>
 
-        <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-primary mb-2">
+        <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white mb-2">
           Audit Your Domain Organic Growth Potential
         </h2>
-        <p className="text-sm text-slate-300 mb-6 font-normal">
+        <p className="text-sm text-slate-700 dark:text-slate-300 mb-6 font-normal">
           Enter your website URL to generate an immediate technical and search intent diagnostic report.
         </p>
 
@@ -133,7 +133,7 @@ export default function AuditModal({ isOpen, onClose, initialDomain }) {
                 onChange={(e) => setDomainInput(e.target.value)}
                 placeholder="yourcompany.com"
                 disabled={isAnalyzing}
-                className="flex-1 px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                className="flex-1 px-4 py-3.5 rounded-xl bg-surface border border-border text-slate-900 dark:text-white text-sm focus:border-accent focus:outline-none transition-colors"
               />
               <button
                 type="submit"

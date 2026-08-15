@@ -10,13 +10,11 @@ export default function Footer() {
           
           {/* Logo & Description Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 p-[1px]">
-                <div className="w-full h-full bg-background rounded-[7px] flex items-center justify-center">
-                  <span className="font-display font-black text-accent text-lg tracking-tighter">Q</span>
-                </div>
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-md bg-[#8CFF00] text-slate-950 flex items-center justify-center font-black text-sm tracking-tighter shadow-[0_0_20px_rgba(140,255,0,0.3)]">
+                <span className="font-mono font-black text-black">QX</span>
               </div>
-              <span className="font-display font-extrabold text-2xl tracking-tight text-primary">
+              <span className="font-display font-black text-2xl tracking-[0.18em] text-slate-900 dark:text-white group-hover:text-accent transition-colors">
                 QIBIXEL
               </span>
             </Link>
@@ -25,7 +23,7 @@ export default function Footer() {
               SEO and organic growth strategies built to turn search visibility into meaningful business growth.
             </p>
 
-            <div className="pt-2 text-xs font-mono text-accent">
+            <div className="pt-2 text-xs font-mono text-accent font-bold">
               SEARCH HIGHER. GROW SMARTER.
             </div>
           </div>

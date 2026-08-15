@@ -22,13 +22,13 @@ export default function InsightsPage({ onOpenAudit }) {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-12">
         <div className="max-w-3xl">
-          <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
-            EDITORIAL THOUGHT LEADERSHIP
+          <div className="text-xs font-mono text-accent uppercase tracking-widest mb-3 font-bold">
+            / EDITORIAL THOUGHT LEADERSHIP
           </div>
-          <h1 className="font-display font-black text-4xl sm:text-6xl text-primary tracking-tight leading-tight mb-6">
+          <h1 className="font-display font-black text-4xl sm:text-6xl text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
             Ideas That Move Search Forward
           </h1>
-          <p className="text-xl text-slate-300 font-normal leading-relaxed">
+          <p className="text-xl text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
             In-depth strategic guides on technical SEO architecture, search intent optimization, Core Web Vitals engineering, and organic growth attribution.
           </p>
         </div>

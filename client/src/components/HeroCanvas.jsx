@@ -64,7 +64,7 @@ export default function HeroCanvas() {
       ctx.clearRect(0, 0, width, height);
 
       // Draw subtle background grid
-      ctx.strokeStyle = theme === 'dark' ? 'rgba(6, 182, 212, 0.05)' : 'rgba(6, 182, 212, 0.03)';
+      ctx.strokeStyle = 'rgba(140, 255, 0, 0.08)';
       ctx.lineWidth = 0.75;
       const gridSize = 45;
       for (let x = 0; x < width; x += gridSize) {
@@ -87,7 +87,7 @@ export default function HeroCanvas() {
         
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, mouse.ripple, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(6, 182, 212, ${(1 - mouse.ripple / 80) * 0.4})`;
+        ctx.strokeStyle = `rgba(140, 255, 0, ${(1 - mouse.ripple / 80) * 0.5})`;
         ctx.lineWidth = 1.5;
         ctx.stroke();
       }
@@ -95,7 +95,7 @@ export default function HeroCanvas() {
       // Draw dual rising organic growth trajectories (Projection bounds)
       // Upper curve (Growth target)
       ctx.beginPath();
-      ctx.strokeStyle = theme === 'dark' ? 'rgba(16, 185, 129, 0.22)' : 'rgba(16, 185, 129, 0.15)';
+      ctx.strokeStyle = 'rgba(140, 255, 0, 0.35)';
       ctx.lineWidth = 1.5;
       ctx.setLineDash([4, 4]);
       ctx.moveTo(0, height * 0.85);
@@ -108,7 +108,7 @@ export default function HeroCanvas() {
 
       // Lower/Core curve (Average Organic Trend)
       ctx.beginPath();
-      ctx.strokeStyle = theme === 'dark' ? 'rgba(6, 182, 212, 0.35)' : 'rgba(6, 182, 212, 0.25)';
+      ctx.strokeStyle = '#8CFF00';
       ctx.lineWidth = 2.5;
       ctx.setLineDash([]);
       ctx.moveTo(0, height * 0.88);
@@ -150,35 +150,35 @@ export default function HeroCanvas() {
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(other.x, other.y);
-            const alpha = (1 - nDist / 95) * 0.25;
+            const alpha = (1 - nDist / 95) * 0.3;
             
             if (node.accent || other.accent) {
-              ctx.strokeStyle = `rgba(6, 182, 212, ${alpha * 1.2})`;
+              ctx.strokeStyle = `rgba(140, 255, 0, ${alpha * 1.5})`;
             } else if (node.emerald || other.emerald) {
-              ctx.strokeStyle = `rgba(16, 185, 129, ${alpha * 1.2})`;
+              ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 1.5})`;
             } else {
-              ctx.strokeStyle = theme === 'dark' ? `rgba(255, 255, 255, ${alpha * 0.4})` : `rgba(0, 0, 0, ${alpha * 0.4})`;
+              ctx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.3})`;
             }
-            ctx.lineWidth = 0.75;
+            ctx.lineWidth = 0.85;
             ctx.stroke();
           }
         }
 
-        // Draw node node point
+        // Draw node point
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         
         // Glow styling
         if (node.accent) {
-          ctx.fillStyle = '#06B6D4'; // cyan-500
-          ctx.shadowColor = '#06B6D4';
-          ctx.shadowBlur = theme === 'dark' ? 10 : 5;
+          ctx.fillStyle = '#8CFF00'; // Electric lime
+          ctx.shadowColor = '#8CFF00';
+          ctx.shadowBlur = 12;
         } else if (node.emerald) {
-          ctx.fillStyle = '#10B981'; // emerald-500
-          ctx.shadowColor = '#10B981';
-          ctx.shadowBlur = theme === 'dark' ? 10 : 5;
+          ctx.fillStyle = '#38BDF8'; // Cyber cyan
+          ctx.shadowColor = '#38BDF8';
+          ctx.shadowBlur = 10;
         } else {
-          ctx.fillStyle = theme === 'dark' ? '#475569' : '#94A3B8';
+          ctx.fillStyle = '#64748B';
           ctx.shadowBlur = 0;
         }
         ctx.fill();
@@ -186,8 +186,8 @@ export default function HeroCanvas() {
 
         // Node labels
         if (node.label && width > 420) {
-          ctx.font = '500 9px "JetBrains Mono", monospace';
-          ctx.fillStyle = theme === 'dark' ? 'rgba(255, 255, 255, 0.55)' : 'rgba(15, 23, 42, 0.65)';
+          ctx.font = '600 9px "Share Tech Mono", monospace';
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
           ctx.fillText(node.label, node.x + 8, node.y + 3);
         }
       });
@@ -207,36 +207,36 @@ export default function HeroCanvas() {
   }, [theme]);
 
   return (
-    <div className="relative w-full h-[380px] lg:h-[520px] rounded-2xl overflow-hidden glass-card border border-border/80 group shadow-2xl">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-pointer bg-slate-950/20 dark:bg-black/20" />
+    <div className="relative w-full h-[380px] lg:h-[520px] rounded-2xl overflow-hidden glass-card border border-[#1E294D] group shadow-2xl">
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-pointer bg-[#060814]/80" />
       
       {/* Proprietary HUD Overlay Elements */}
-      <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-surface/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-border/80 text-[10px] font-mono font-bold text-accent shadow-sm">
-        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+      <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-[#0C1126]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#8CFF00]/30 text-[10px] font-mono font-bold text-[#8CFF00] shadow-[0_0_15px_rgba(140,255,0,0.2)]">
+        <span className="w-2 h-2 rounded-full bg-[#8CFF00] animate-ping" />
         LIVE ORGANIC CRAWL MATRIX
       </div>
 
-      <div className="absolute top-4 right-4 z-10 hidden sm:flex items-center gap-3 bg-surface/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-border/80 text-[10px] font-mono text-secondary shadow-sm">
-        <span>INDEXING: <strong className="text-emerald-500 dark:text-emerald-400">99.8%</strong></span>
-        <span className="text-slate-300 dark:text-slate-700">|</span>
-        <span>CV SCORE: <strong className="text-accent">98/100</strong></span>
+      <div className="absolute top-4 right-4 z-10 hidden sm:flex items-center gap-3 bg-[#0C1126]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] font-mono text-slate-300 shadow-sm">
+        <span>INDEXING: <strong className="text-[#8CFF00]">99.8%</strong></span>
+        <span className="text-slate-600">|</span>
+        <span>CV SCORE: <strong className="text-[#8CFF00]">98/100</strong></span>
       </div>
 
       {/* Floating HUD metrics */}
-      <div className="absolute bottom-6 left-6 z-10 max-w-[240px] bg-surface/90 backdrop-blur-lg p-3.5 rounded-xl border border-border/85 shadow-2xl text-left hidden sm:block">
-        <div className="text-[10px] font-mono font-semibold text-muted uppercase tracking-wider mb-1">QIBIXEL Growth Signal</div>
-        <div className="text-sm font-semibold text-primary flex items-center justify-between">
+      <div className="absolute bottom-6 left-6 z-10 max-w-[240px] bg-[#0C1126]/95 backdrop-blur-lg p-3.5 rounded-xl border border-[#1E294D] shadow-2xl text-left hidden sm:block">
+        <div className="text-[10px] font-mono font-semibold text-slate-400 uppercase tracking-wider mb-1">QIBIXEL Growth Signal</div>
+        <div className="text-sm font-semibold text-white flex items-center justify-between">
           <span>Search Velocity</span>
-          <span className="text-emerald-500 dark:text-emerald-400 font-mono text-xs font-bold">+342% YoY</span>
+          <span className="text-[#8CFF00] font-mono text-xs font-bold">+342% YoY</span>
         </div>
-        <div className="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
-          <div className="bg-gradient-to-r from-cyan-500 to-emerald-400 h-full w-[88%]" />
+        <div className="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+          <div className="bg-[#8CFF00] h-full w-[88%] shadow-[0_0_10px_#8CFF00]" />
         </div>
       </div>
 
-      <div className="absolute bottom-6 right-6 z-10 hidden md:block bg-surface/90 backdrop-blur-lg px-4 py-2.5 rounded-xl border border-border/85 text-right font-mono text-[10px] text-secondary shadow-2xl">
-        <div className="text-accent font-bold">QIBIXEL NODE ENGINE</div>
-        <div className="text-[9px] text-muted">Autonomous Rank Optimization</div>
+      <div className="absolute bottom-6 right-6 z-10 hidden md:block bg-[#0C1126]/95 backdrop-blur-lg px-4 py-2.5 rounded-xl border border-[#1E294D] text-right font-mono text-[10px] text-slate-300 shadow-2xl">
+        <div className="text-[#8CFF00] font-bold">QIBIXEL NODE ENGINE</div>
+        <div className="text-[9px] text-slate-400">Autonomous Rank Optimization</div>
       </div>
     </div>
   );

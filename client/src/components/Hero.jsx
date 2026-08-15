@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Search, ShieldCheck, Sparkles, TrendingUp, Cpu, Award } from 'lucide-react';
 import HeroCanvas from './HeroCanvas';
+import ScrollReveal from './ScrollReveal';
 
 export default function Hero({ onOpenAudit }) {
   const [websiteUrl, setWebsiteUrl] = useState('');
@@ -29,74 +30,99 @@ export default function Hero({ onOpenAudit }) {
           {/* Left Hero Content */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
             
-            {/* Small Eyebrow */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-cyan-500/5 dark:bg-cyan-500/10 border border-cyan-500/20 text-accent text-xs font-mono tracking-wider uppercase mb-6 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
-              SEO & ORGANIC GROWTH INTELLIGENCE
-            </div>
+            {/* Monospace Eyebrow matching image: DIGITAL GROWTH / AI / WEB */}
+            <ScrollReveal variant="fade-down" delay={0}>
+              <div className="inline-flex items-center gap-2 text-[#65A30D] dark:text-[#8CFF00] text-xs sm:text-sm font-mono tracking-widest uppercase mb-6 font-bold">
+                <span>DIGITAL GROWTH</span>
+                <span className="opacity-50">/</span>
+                <span>AI</span>
+                <span className="opacity-50">/</span>
+                <span>WEB</span>
+              </div>
+            </ScrollReveal>
 
-            {/* Main Headline */}
-            <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-primary tracking-tight leading-[1.08] mb-6">
-              Search Higher. <br />
-              <span className="bg-gradient-to-r from-cyan-600 via-teal-500 to-emerald-600 dark:from-cyan-400 dark:via-teal-300 dark:to-emerald-400 bg-clip-text text-transparent">
-                Grow Smarter.
-              </span>
-            </h1>
+            {/* Main Headline matching image: BE SEEN. BE ANSWERED. BE REMEMBERED. */}
+            <ScrollReveal variant="fade-up" delay={100}>
+              <h1 className="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-slate-900 dark:text-white leading-[1.03] mb-6 uppercase">
+                BE SEEN. <br />
+                <span className="text-[#65A30D] dark:text-[#8CFF00] dark:text-lime-glow font-black">
+                  BE ANSWERED.
+                </span> <br />
+                BE REMEMBERED.
+              </h1>
+            </ScrollReveal>
 
-            {/* Supporting Headline */}
-            <p className="text-base sm:text-lg text-muted font-normal leading-relaxed max-w-2xl mb-8">
-              QIBIXEL turns organic visibility into sustainable acquisition revenue. We combine technical SEO architecture, strategic search intent, and data-driven optimizations.
-            </p>
+            {/* Supporting Description matching image */}
+            <ScrollReveal variant="fade-up" delay={200}>
+              <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed max-w-2xl mb-8">
+                We build search strategies, AI-ready content systems, and high-performance websites designed for the next generation of digital discovery.
+              </p>
+            </ScrollReveal>
 
-            {/* Interactive URL Input Bar (High Conversion CTA) */}
-            <form onSubmit={handleUrlSubmit} className="w-full max-w-xl mb-3 relative z-20">
-              <div className="flex flex-col sm:flex-row items-stretch gap-2.5 p-2 rounded-2xl bg-surface/90 border border-border/80 shadow-2xl dark:shadow-slate-950/65 backdrop-blur-md">
-                <div className="flex items-center gap-3 px-3.5 py-3 flex-1 min-w-0">
-                  <Search className="w-4 h-4 text-accent flex-shrink-0" />
-                  <input
-                    type="text"
-                    value={websiteUrl}
-                    onChange={(e) => setWebsiteUrl(e.target.value)}
-                    placeholder="Enter your website domain (e.g. Acme.com)"
-                    className="w-full bg-transparent text-primary text-sm focus:outline-none font-sans placeholder-slate-400 dark:placeholder-slate-500"
-                  />
-                </div>
+            {/* Primary & Secondary Action CTA Buttons matching image */}
+            <ScrollReveal variant="fade-up" delay={300}>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-8">
                 <button
-                  type="submit"
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 font-semibold text-slate-950 hover:shadow-cyan-500/25 hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
+                  onClick={() => onOpenAudit('')}
+                  className="px-8 py-4 rounded-xl bg-[#8CFF00] hover:bg-[#9eff26] text-black font-extrabold text-sm uppercase tracking-wider transition-all duration-300 shadow-md dark:shadow-[0_0_30px_rgba(140,255,0,0.45)] hover:shadow-[0_0_45px_rgba(140,255,0,0.75)] hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer"
                 >
-                  <span>Analyze Domain</span>
-                  <ArrowRight className="w-4 h-4 text-slate-950" />
+                  <span>Start a Project</span>
+                  <ArrowRight className="w-4.5 h-4.5 text-black stroke-[3]" />
                 </button>
-              </div>
-            </form>
 
-            <div className="text-[11px] font-mono text-muted mb-8 flex items-center gap-1.5 justify-center lg:justify-start">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Free diagnostic report generated instantly. No card required.</span>
-            </div>
+                <a
+                  href="#services"
+                  className="px-8 py-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider border border-slate-300 dark:border-white/15 backdrop-blur-md transition-all duration-300 flex items-center justify-center gap-2.5 hover:border-accent/40"
+                >
+                  <span>Explore Services</span>
+                  <span className="text-base text-slate-500 dark:text-slate-300">↓</span>
+                </a>
+              </div>
+            </ScrollReveal>
 
-            {/* Core Capabilities statement */}
-            <div className="pt-6 border-t border-border/70 w-full">
-              <div className="text-xs font-mono uppercase tracking-widest text-muted mb-3 flex items-center justify-center lg:justify-start gap-2 font-bold">
-                <ShieldCheck className="w-4 h-4 text-cyan-400" />
-                <span>CORE PERFORMANCE PILLARS</span>
+            {/* Interactive Domain Input Bar for Instant SEO Scan */}
+            <ScrollReveal variant="fade-up" delay={400} className="w-full max-w-xl">
+              <form onSubmit={handleUrlSubmit} className="w-full mb-6 relative z-20">
+                <div className="flex flex-col sm:flex-row items-stretch gap-2.5 p-2 rounded-2xl bg-surface/90 border border-border shadow-xl backdrop-blur-md">
+                  <div className="flex items-center gap-3 px-3.5 py-3 flex-1 min-w-0">
+                    <Search className="w-4 h-4 text-accent flex-shrink-0" />
+                    <input
+                      type="text"
+                      value={websiteUrl}
+                      onChange={(e) => setWebsiteUrl(e.target.value)}
+                      placeholder="Enter your website domain (e.g. Acme.com)"
+                      className="w-full bg-transparent text-primary text-sm focus:outline-none font-sans placeholder-slate-400"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="px-5 py-3 rounded-xl bg-[#8CFF00] hover:bg-[#9eff26] text-black font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                  >
+                    <span>Analyze Domain</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </form>
+            </ScrollReveal>
+
+            {/* Monospace Category Strip matching image: / SEO / AEO / WEB */}
+            <ScrollReveal variant="fade-up" delay={500}>
+              <div className="flex items-center gap-4 text-xs font-mono tracking-widest text-slate-400 uppercase pt-2">
+                <span className="text-[#8CFF00] font-bold">/ SEO</span>
+                <span className="text-slate-600">/</span>
+                <span className="text-[#8CFF00] font-bold">/ AEO</span>
+                <span className="text-slate-600">/</span>
+                <span className="text-[#8CFF00] font-bold">/ WEB</span>
               </div>
-              <div className="text-xs font-medium text-muted flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2">
-                {["Technical Infrastructure", "Keyword Intent", "Core Web Vitals", "Authority Signals", "Local Search Optimization"].map((pill, idx) => (
-                  <span key={idx} className="hover:text-accent transition-colors duration-250 cursor-default flex items-center gap-1.5">
-                    <span className="w-1 h-1 rounded-full bg-slate-350 dark:bg-slate-700" />
-                    {pill}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </ScrollReveal>
 
           </div>
 
           {/* Right Hero Visual */}
           <div className="lg:col-span-5 w-full relative">
-            <HeroCanvas />
+            <ScrollReveal variant="scale-up" delay={200}>
+              <HeroCanvas />
+            </ScrollReveal>
             
             {/* Absolute floating metrics cards (WOW factors) */}
             <div className="absolute -top-4 -left-4 bg-surface/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-border/80 shadow-2xl flex items-center gap-2.5 animate-float hidden lg:flex">
@@ -126,3 +152,4 @@ export default function Hero({ onOpenAudit }) {
     </section>
   );
 }
+

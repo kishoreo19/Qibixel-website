@@ -1,5 +1,6 @@
 import React from 'react';
 import { Compass, Eye, Layers, Database, BarChart2, ShieldAlert } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 export default function WhyQibixel() {
   const pillars = [
@@ -40,41 +41,44 @@ export default function WhyQibixel() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 text-center lg:text-left mx-auto lg:mx-0">
-          <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
-            THE QIBIXEL ADVANTAGE
+        <ScrollReveal variant="fade-up">
+          <div className="max-w-3xl mb-16 text-center lg:text-left mx-auto lg:mx-0">
+            <div className="text-xs font-mono text-accent uppercase tracking-widest mb-3 font-bold">
+              / THE QIBIXEL ADVANTAGE
+            </div>
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
+              A More Intelligent Approach to <span className="text-accent">SEO</span>
+            </h2>
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
-            A More Intelligent Approach to SEO
-          </h2>
-        </div>
+        </ScrollReveal>
 
         {/* 6 Grid Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
-              <div
-                key={idx}
-                className="glass-card p-8 rounded-2xl flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
-                    <Icon className="w-6 h-6" />
+              <ScrollReveal key={idx} variant="fade-up" delay={(idx % 3) * 120}>
+                <div
+                  className="glass-card p-8 rounded-2xl flex flex-col justify-between group border border-border bg-surface hover:border-accent/50 h-full"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:bg-accent group-hover:text-slate-950 transition-all">
+                      <Icon className="w-6 h-6 stroke-[2]" />
+                    </div>
+                    <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 group-hover:text-accent transition-colors">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-sm text-muted leading-relaxed font-normal">
+                      {pillar.desc}
+                    </p>
                   </div>
-                  <h3 className="font-display font-bold text-xl text-primary mb-3 group-hover:text-accent transition-colors">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed font-normal">
-                    {pillar.desc}
-                  </p>
-                </div>
 
-                <div className="pt-6 mt-6 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-muted">
-                  <span>PILLAR 0{idx + 1}</span>
-                  <span className="text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">INTEL CORE</span>
+                  <div className="pt-6 mt-6 border-t border-border flex items-center justify-between text-[11px] font-mono text-muted">
+                    <span>PILLAR 0{idx + 1}</span>
+                    <span className="text-accent opacity-0 group-hover:opacity-100 transition-opacity font-bold">INTEL CORE</span>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -83,3 +87,4 @@ export default function WhyQibixel() {
     </section>
   );
 }
+

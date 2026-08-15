@@ -1,36 +1,37 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Cpu, Zap, Activity } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 export default function AboutSection() {
   const [activeTab, setActiveTab] = useState('technical');
 
   return (
-    <section id="about" className="py-24 relative bg-[#090D15] border-t border-slate-800/80">
+    <section id="about" className="py-24 relative bg-background border-t border-border transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Text Column */}
-          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <ScrollReveal variant="fade-right" className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             
-            <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
-              ABOUT QIBIXEL
+            <div className="text-xs font-mono text-accent uppercase tracking-widest mb-3 font-bold">
+              / ABOUT QIBIXEL
             </div>
 
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
               We Don’t Chase Rankings. <br />
-              <span className="text-cyan-400">We Build Search Growth.</span>
+              <span className="text-accent">We Build Search Growth.</span>
             </h2>
 
-            <div className="space-y-4 text-slate-300 text-base leading-relaxed mb-8">
+            <div className="space-y-4 text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-8 font-normal">
               <p>
                 Search is changing faster than ever. Algorithms evolve, competition increases, and users expect better answers. Sustainable SEO requires more than publishing content and targeting keywords.
               </p>
               <p>
                 QIBIXEL combines technical SEO, search intent analysis, content strategy, competitive intelligence, authority building, and performance analytics to create SEO programs built around real business objectives.
               </p>
-              <p className="font-medium text-primary">
+              <p className="font-semibold text-slate-900 dark:text-white">
                 Our approach is simple: understand the opportunity, prioritize what matters, execute with precision, measure the impact, and continuously improve.
               </p>
             </div>
@@ -45,8 +46,8 @@ export default function AboutSection() {
                 "Revenue Attribution",
                 "Algorithmic Resiliency"
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center justify-center lg:justify-start gap-2 text-xs font-semibold text-slate-200">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <div key={idx} className="flex items-center justify-center lg:justify-start gap-2 text-xs font-bold text-slate-800 dark:text-slate-200">
+                  <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -61,10 +62,10 @@ export default function AboutSection() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
 
-          </div>
+          </ScrollReveal>
 
           {/* Right Abstract QIBIXEL Data Visualization Column */}
-          <div className="lg:col-span-6 w-full">
+          <ScrollReveal variant="fade-left" delay={150} className="lg:col-span-6 w-full">
             <div className="glass-card rounded-2xl p-6 sm:p-8 border border-border/85 relative overflow-hidden">
               
               <div className="flex items-center justify-between border-b border-border/60 pb-4 mb-6">
@@ -98,21 +99,12 @@ export default function AboutSection() {
                     {tab.label}
                   </button>
                 ))}
-              </div>              {/* Visualization Dynamic Graphic */}
-              <div className="bg-slate-950-always p-5 rounded-xl border border-slate-800-always font-mono text-xs text-slate-300-always space-y-4 shadow-2xl">
+              </div>
+
+              {/* Framework Panel Displays */}
+              <div className="space-y-4 font-mono text-xs text-slate-700 dark:text-slate-300">
                 {activeTab === 'technical' && (
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center text-slate-400-always">
-                      <span>Crawl Budget Efficiency</span>
-                      <span className="text-emerald-450 font-bold">99.4%</span>
-                    </div>
-                    <div className="w-full bg-slate-900-always h-2 rounded-full overflow-hidden border border-slate-800-always">
-                      <div className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full w-[99.4%]" />
-                    </div>
-                    <div className="flex justify-between items-center text-slate-400-always pt-1">
-                      <span>Core Web Vitals INP</span>
-                      <span className="text-cyan-400 font-bold">42ms (Good)</span>
-                    </div>
                     <div className="w-full bg-slate-900-always h-2 rounded-full overflow-hidden border border-slate-800-always">
                       <div className="bg-gradient-to-r from-cyan-500 to-teal-450 h-full w-[92%]" />
                     </div>

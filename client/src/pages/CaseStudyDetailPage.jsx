@@ -25,20 +25,20 @@ export default function CaseStudyDetailPage({ onOpenAudit }) {
 
         {/* Case Study Banner */}
         <div className="max-w-4xl mb-12">
-          <div className="flex items-center gap-3 text-xs font-mono text-cyan-400 mb-4">
-            <span className="bg-amber-500/10 text-amber-400 px-3 py-1 rounded border border-amber-500/30 uppercase font-bold">
+          <div className="flex items-center gap-3 text-xs font-mono text-accent mb-4">
+            <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 px-3 py-1 rounded border border-amber-500/30 uppercase font-bold">
               {cs.tag}
             </span>
-            <span className="text-slate-600">•</span>
-            <span className="text-slate-300 font-semibold">{cs.industry}</span>
+            <span className="text-slate-400">•</span>
+            <span className="text-slate-700 dark:text-slate-300 font-bold">{cs.industry}</span>
           </div>
 
-          <h1 className="font-display font-black text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
+          <h1 className="font-display font-black text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
             {cs.title}
           </h1>
 
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400 flex items-center gap-2">
-            <Info className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+          <div className="p-4 rounded-xl bg-surface border border-border text-xs text-slate-700 dark:text-slate-300 flex items-center gap-2 font-medium">
+            <Info className="w-4 h-4 text-accent flex-shrink-0" />
             <span>{cs.note}</span>
           </div>
         </div>
@@ -46,26 +46,26 @@ export default function CaseStudyDetailPage({ onOpenAudit }) {
         {/* Key Metrics Banner */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
           {cs.results.map((res, rIdx) => (
-            <div key={rIdx} className="glass-card p-6 rounded-2xl border border-slate-800 text-center">
-              <div className="text-xs font-mono text-slate-400 uppercase mb-2">{res.label}</div>
-              <div className="font-display font-black text-4xl sm:text-5xl text-cyan-400 mb-1">{res.value}</div>
-              <div className="text-[11px] text-emerald-400 font-mono">VERIFIED RESULT</div>
+            <div key={rIdx} className="glass-card p-6 rounded-2xl border border-border bg-surface text-center shadow-md">
+              <div className="text-xs font-mono text-muted uppercase mb-2 font-bold">{res.label}</div>
+              <div className="font-display font-black text-4xl sm:text-5xl text-accent mb-1">{res.value}</div>
+              <div className="text-[11px] text-accent font-mono font-bold">VERIFIED RESULT</div>
             </div>
           ))}
         </div>
 
         {/* Problem vs Strategy Details */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-          <div className="lg:col-span-6 glass-card p-8 rounded-2xl border border-slate-800 space-y-4">
-            <div className="text-xs font-mono text-red-400 uppercase tracking-widest font-bold">THE INITIAL CHALLENGE</div>
-            <h3 className="font-display font-bold text-xl text-primary">Structural Bottlenecks & Keyword Gaps</h3>
-            <p className="text-sm text-slate-300 leading-relaxed font-normal">{cs.challenge}</p>
+          <div className="lg:col-span-6 glass-card p-8 rounded-2xl border border-border bg-surface space-y-4 shadow-md">
+            <div className="text-xs font-mono text-red-500 dark:text-red-400 uppercase tracking-widest font-bold">/ THE INITIAL CHALLENGE</div>
+            <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white">Structural Bottlenecks & Keyword Gaps</h3>
+            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{cs.challenge}</p>
           </div>
 
-          <div className="lg:col-span-6 glass-card p-8 rounded-2xl border border-slate-800 space-y-4">
-            <div className="text-xs font-mono text-emerald-400 uppercase tracking-widest font-bold">QIBIXEL STRATEGY DEPLOYED</div>
-            <h3 className="font-display font-bold text-xl text-primary">Technical & Content Execution</h3>
-            <p className="text-sm text-slate-300 leading-relaxed font-normal">{cs.strategy}</p>
+          <div className="lg:col-span-6 glass-card p-8 rounded-2xl border border-border bg-surface space-y-4 shadow-md">
+            <div className="text-xs font-mono text-accent uppercase tracking-widest font-bold">/ QIBIXEL STRATEGY DEPLOYED</div>
+            <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white">Technical & Content Execution</h3>
+            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{cs.strategy}</p>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, Layers, Award, Target, ArrowUpRight, CheckCircle2, ChevronRight, Activity, Search, ShieldCheck } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 function AnimatedCounter({ value, duration = 1500 }) {
   const [count, setCount] = useState(0);
@@ -15,8 +16,10 @@ function AnimatedCounter({ value, duration = 1500 }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry.isIntersecting) {
           setHasAnimated(true);
+        } else {
+          setHasAnimated(false); // Re-animates when scrolling back into view (up or down)
         }
       },
       { threshold: 0.1 }
@@ -32,10 +35,13 @@ function AnimatedCounter({ value, duration = 1500 }) {
         observer.unobserve(currentEl);
       }
     };
-  }, [hasAnimated]);
+  }, []);
 
   useEffect(() => {
-    if (!hasAnimated || isNaN(numericTarget)) return;
+    if (!hasAnimated || isNaN(numericTarget)) {
+      setCount(0);
+      return;
+    }
 
     let start = 0;
     const end = numericTarget;
@@ -132,24 +138,26 @@ export default function MetricResults() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 text-center lg:text-left mx-auto lg:mx-0">
-          <div className="text-xs font-mono text-accent uppercase tracking-widest mb-3 font-bold">
-            MEASURABLE PERFORMANCE
+        <ScrollReveal variant="fade-up">
+          <div className="max-w-3xl mb-16 text-center lg:text-left mx-auto lg:mx-0">
+            <div className="text-xs font-mono text-accent uppercase tracking-widest mb-3 font-bold">
+              MEASURABLE PERFORMANCE
+            </div>
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
+              SEO That Connects Visibility With Revenue
+            </h2>
+            <p className="text-base sm:text-lg text-muted leading-relaxed font-normal">
+              Rankings are only one part of search visibility. QIBIXEL focuses on the complete organic growth journey — from technical indexation and search intent to conversions and business outcomes.
+            </p>
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-primary tracking-tight leading-tight mb-6">
-            SEO That Connects Visibility With Revenue
-          </h2>
-          <p className="text-base sm:text-lg text-muted leading-relaxed font-normal">
-            Rankings are only one part of search visibility. QIBIXEL focuses on the complete organic growth journey — from technical indexation and search intent to conversions and business outcomes.
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* Interactive Dashboard Container */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Controllers: 4 Metrics Selector Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            {metrics.map((item) => {
+          <ScrollReveal variant="fade-right" delay={100} className="lg:col-span-5 flex flex-col gap-4">
+            {metrics.map((item, idx) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
               return (
@@ -190,10 +198,11 @@ export default function MetricResults() {
                 </button>
               );
             })}
-          </div>
+          </ScrollReveal>
 
           {/* Right Spotlight Panel: Interactive Mock Dashboard Screen */}
-          <div className="lg:col-span-7">
+          <ScrollReveal variant="fade-left" delay={200} className="lg:col-span-7">
+
             <div className="w-full h-full bg-slate-950-always rounded-3xl p-6 sm:p-8 border border-slate-800-always flex flex-col justify-between relative overflow-hidden shadow-2xl">
               
               {/* Mock Dashboard Title Bar */}
@@ -374,9 +383,10 @@ export default function MetricResults() {
 
               <div className="absolute top-1/2 right-0 w-32 h-32 bg-cyan-500/5 blur-2xl pointer-events-none rounded-full" />
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
+
 
       </div>
     </section>
